@@ -1,0 +1,8 @@
+{
+  "name": "JustOne",
+  "app_id": "665de0ed",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

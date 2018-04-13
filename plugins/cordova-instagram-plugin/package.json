@@ -1,0 +1,101 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "cordova-instagram-plugin",
+        "scope": null,
+        "escapedName": "cordova-instagram-plugin",
+        "name": "cordova-instagram-plugin",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "/Users/peter/Desktop/hybrid/JustOne"
+    ]
+  ],
+  "_from": "cordova-instagram-plugin@latest",
+  "_id": "cordova-instagram-plugin@0.5.6",
+  "_inCache": true,
+  "_location": "/cordova-instagram-plugin",
+  "_nodeVersion": "9.4.0",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/cordova-instagram-plugin_0.5.6_1522127506418_0.0047001455183528495"
+  },
+  "_npmUser": {
+    "name": "vstirbu",
+    "email": "vstirbu@gmail.com"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "cordova-instagram-plugin",
+    "scope": null,
+    "escapedName": "cordova-instagram-plugin",
+    "name": "cordova-instagram-plugin",
+    "rawSpec": "",
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-instagram-plugin/-/cordova-instagram-plugin-0.5.6.tgz",
+  "_shasum": "ec4d76014801a2113da877843ff9f9cc5e797d33",
+  "_shrinkwrap": null,
+  "_spec": "cordova-instagram-plugin",
+  "_where": "/Users/peter/Desktop/hybrid/JustOne",
+  "author": {
+    "name": "Vlad Stirbu"
+  },
+  "bugs": {
+    "url": "https://github.com/vstirbu/InstagramPlugin/issues"
+  },
+  "cordova": {
+    "id": "cordova-instagram-plugin",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "dependencies": {},
+  "description": "Share the content of a canvas element or a dataUrl encoded image using the Instagram application for iOS and Android.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-mHw1r3uwZUMdH1tWq7aQg5FDZhHG3HHeEeNR2JVorINEFJ7TPAXU9BN5S8qiCixt1Z156sg6wvRVYkXe7WVyVQ==",
+    "shasum": "ec4d76014801a2113da877843ff9f9cc5e797d33",
+    "tarball": "https://registry.npmjs.org/cordova-instagram-plugin/-/cordova-instagram-plugin-0.5.6.tgz",
+    "fileCount": 10,
+    "unpackedSize": 28519
+  },
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "gitHead": "781e0bd63575930a0f6933c7e4e9c94d39b55cb9",
+  "homepage": "https://github.com/vstirbu/InstagramPlugin#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "vstirbu",
+      "email": "vlad.stirbu@ieee.org"
+    }
+  ],
+  "name": "cordova-instagram-plugin",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vstirbu/InstagramPlugin.git"
+  },
+  "version": "0.5.6"
+}

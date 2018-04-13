@@ -1,0 +1,19 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-instagram-plugin": {
+      "PACKAGE_NAME": "com.peter.juston"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-universal-clipboard": {
+      "PACKAGE_NAME": "com.peter.juston"
+    }
+  }
+}
