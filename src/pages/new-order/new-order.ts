@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,LoadingController } from 'ionic-angular';
+import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
+import { Storage } from '@ionic/storage';
+import { OrdersPage } from '../orders/orders';
 
 /**
  * Generated class for the NewOrderPage page.
@@ -15,7 +18,13 @@ import { NavController, NavParams } from 'ionic-angular';
 export class NewOrderPage {
   items  = new Array<Product>();
   order :Order = new Order();
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public loadingCtrl:LoadingController,public httpNavtive:HttpNativeProvider,
+    public storage:Storage
+  ) {
+    storage.get('id_user').then((val) => {
+      this.order.id_user=val
+    });
     let parameter=this.navParams.get('item');
     if(parameter){
       let product=new Product();
@@ -39,7 +48,50 @@ export class NewOrderPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewOrderPage');
   }
-
+  submit(){
+    // alert(JSON.stringify(this.product));
+    let loader = this.loadingCtrl.create({
+      content: "Loading"
+    });
+    loader.present();
+    let url = 'http://api.nextobe.co.th/orders/newOrder';
+      let postParams = {
+        'date':this.order.date,
+        'id_user':this.order.id_user,
+        'payment':this.order.payment,
+        'customer_name':this.order.customer_name,
+        'customer_phone':this.order.customer_phone,
+        'customer_social':this.order.customer_social,
+        'customer_social_id':this.order.customer_social_id,
+        'address':this.order.address,
+        'product_total':this.order.product_total,
+        'grand_total':this.order.grand_total,
+        'id_product':this.items[0].id,
+        'product_name':this.items[0].name,
+        'price':this.items[0].price,
+        'sale_price':this.items[0].sale_price,
+        'quantity':this.items[0].quantity
+      };
+      let options = {'Content-Type': 'application/json'};
+      this.httpNavtive.post(url, postParams, options).subscribe(data=> {
+        // alert(JSON.stringify(data));
+        alert(data.message);
+        if(data.status ==200){
+          // this.navCtrl.push(ProductsPage)
+          this.navCtrl.setRoot(OrdersPage);
+          
+        }
+        loader.dismiss();
+      });
+    }
+  change(){
+    let price=0;
+    this.items.forEach(element => {
+      price += Number(element.sale_price) * Number(element.quantity);
+    });
+    this.order.product_total=price;
+    this.order.grand_total=price;
+  }
 }
 export class Product {
   id: string;
@@ -51,10 +103,11 @@ export class Product {
 }
 export class Order{
   date: string;
- payment:string;
+  id_user:string;
+ payment:string = "Bankwire";
  customer_name:string;
  customer_phone:string;
- customer_social:Number;
+ customer_social:Number=1;
  customer_social_id:string;
  address:string;
  

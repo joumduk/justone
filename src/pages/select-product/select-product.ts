@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { NewOrderPage } from '../new-order/new-order';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { Storage } from '@ionic/storage';
 /**
@@ -45,6 +46,13 @@ export class SelectProductPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SelectProductPage');
+  }
+  clickItems(item){
+    this.navCtrl.push(
+      NewOrderPage,{
+        item:item
+      }
+    )
   }
 
 }

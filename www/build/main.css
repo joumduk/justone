@@ -25714,3 +25714,7 @@ page-new-order .my-input {
   -ms-flex-item-align: auto;
   align-self: auto;
 }
+
+page-select-product ion-col {
+  border-bottom: 1px solid #333;
+}

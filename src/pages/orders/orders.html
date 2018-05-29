@@ -7,20 +7,14 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+    <button ion-button block (click)="pushNewOrder()">New Order</button>
   <ion-list>
-    <ion-item>
-      <a ion-button block (click)="pushNewOrder()"> New Order</a>
+    <ion-item *ngFor="let order of orders" (click)="orderDatail(order)">
+      <h2 style="color:#387ef5;">Order : {{order.reference}} - {{order.id_order}} </h2>
+      <h3>Customer: {{order.customer_name}} </h3>
+      <h4>Total Price : <b>{{order.grand_total | currency :'฿ '}}</b></h4>
+      <p style="text-align:right">{{order.date|date}}</p>
     </ion-item>
-    <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
-      <ion-icon [name]="item.icon" item-start></ion-icon>
-      {{item.title}}
-      <div class="item-note" item-end>
-        {{item.note}}
-      </div>
-    </button>
   </ion-list>
-  <div *ngIf="selectedItem" padding>
-    You navigated here from <b>{{selectedItem.title}}</b>
-  </div>
 </ion-content>

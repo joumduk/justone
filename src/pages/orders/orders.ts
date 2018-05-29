@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { NewOrderPage } from '../new-order/new-order';
+import { SelectProductPage } from '../select-product/select-product';
+
+import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
+import { Storage } from '@ionic/storage';
 /**
  * Generated class for the OrdersPage page.
  *
@@ -13,25 +16,33 @@ import { NewOrderPage } from '../new-order/new-order';
   templateUrl: 'orders.html',
 })
 export class OrdersPage {
-  selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+  orders= Array<Order>();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.selectedItem = navParams.get('item');
-
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,    
+    public storage:Storage,   
+    public httpNavtive:HttpNativeProvider) {
     // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
-    this.items = [];
-    for (let i = 1; i < 11; i++) {
-      this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+    storage.get('id_user').then((val) => {
+      let url = 'http://api.nextobe.co.th/orders/getOrders';
+      let postParams = {'id_user':val};
+      let options = {'Content-Type': 'application/json'};
+      this.httpNavtive.post(url, postParams, options).subscribe(data=> {
+        // alert(JSON.stringify(data));
+        // alert(data);
+        this.orders = [];
+        for (let e of data.orders) {
+          this.orders.push({
+            date:e.date,
+            id_order: e.id_order,
+            reference:e.reference,
+            payment: e.payment,
+            customer_name: e.customer_name,
+            grand_total: e.grand_total
+          });
+        }
       });
-    }
+    });
   }
 
   ionViewDidLoad() {
@@ -44,6 +55,14 @@ export class OrdersPage {
     });
   }
   pushNewOrder(){
-    this.navCtrl.push(NewOrderPage);
+    this.navCtrl.push(SelectProductPage);
   }
+}
+export class Order{
+  date: string;
+  id_order:string;
+  reference:string;
+  payment:string;
+  customer_name:string;
+  grand_total:Number;
 }

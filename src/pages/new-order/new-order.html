@@ -19,11 +19,11 @@
     <ion-card>
         <ion-list>
         <ion-item>
-            <ion-label>Date</ion-label>
+            <ion-label color="primary" >Date</ion-label>
             <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="order.date" ></ion-datetime>
           </ion-item>
           <ion-item>
-            <ion-label>Payment</ion-label>
+            <ion-label color="primary" >Payment</ion-label>
             <ion-select [(ngModel)]="order.payment">
               <ion-option value="Bankwire">Bankwire</ion-option>
               <ion-option value="Cash on delivery">Cash on delivery</ion-option>
@@ -36,15 +36,15 @@
     <ion-card>
         <ion-list>
           <ion-item>
-            <ion-label>Name</ion-label>
+            <ion-label color="primary" >Name</ion-label>
             <ion-input placeholder="Name" [(ngModel)]="order.customer_name"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Phone</ion-label>
+            <ion-label color="primary" >Phone</ion-label>
             <ion-input placeholder="Phone" [(ngModel)]="order.customer_phone"></ion-input>
           </ion-item>
           <ion-item>
-            <ion-label>Social</ion-label>
+            <ion-label color="primary" >Social</ion-label>
             <ion-select [(ngModel)]="order.customer_social">
               <ion-option value="1">Facebook</ion-option>
               <ion-option value="2">Instagram</ion-option>
@@ -52,11 +52,11 @@
             </ion-select>
           </ion-item>
           <ion-item>
-            <ion-label>Social ID</ion-label>
+            <ion-label color="primary" >Social ID</ion-label>
             <ion-input placeholder="Social ID" [(ngModel)]="order.customer_social_id"></ion-input>
           </ion-item>
           <ion-item>
-              <ion-label>Address</ion-label>
+              <ion-label stacked color="primary" >Address</ion-label>
               <ion-textarea placeholder="Enter a Address" [(ngModel)]="order.address"></ion-textarea>
             </ion-item>
         </ion-list>    
@@ -73,18 +73,18 @@
                 <ion-label color="primary">{{item.sale_price| currency:'฿ '}}</ion-label>
             </ion-col>
             <ion-col align-self-center col-3>
-                <ion-input type="number" text-center  placeholder="Number" style="text-align:center" [(ngModel)]="item.quantity" ></ion-input>
+                <ion-input type="number" text-center (keyup)="change()" placeholder="Number" style="text-align:center" [(ngModel)]="item.quantity" ></ion-input>
             </ion-col>
           </ion-row>
           <ion-item>
               <ion-label>Product Total</ion-label>
-              <ion-input text-right  type="number" [(ngModel)]="order.product_total"></ion-input>
+              <ion-input text-right  type="number" readonly [(ngModel)]="order.product_total"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-label>Grand Total</ion-label>
-                <ion-input text-right   type="number" [(ngModel)]="order.grand_total"></ion-input>
+                <ion-input text-right   type="number" readonly [(ngModel)]="order.grand_total"></ion-input>
               </ion-item>
         </ion-list>    
     </ion-card>
-    <a ion-button block> Submit</a>
+    <a ion-button block (click)="submit()"> Submit</a>
 </ion-content>
