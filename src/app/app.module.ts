@@ -10,6 +10,9 @@ import { ProductsPage } from '../pages/products/products';
 import { OrdersPage } from '../pages/orders/orders';
 import { ReportPage } from '../pages/report/report';
 import { NewProductPage } from '../pages/new-product/new-product';
+import { SelectProductPage } from '../pages/select-product/select-product';
+import { DetailPage } from '../pages/detail/detail';
+import { NewOrderPage }from '../pages/new-order/new-order';
 
 import { HTTP } from '@ionic-native/http';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -21,6 +24,10 @@ import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { Instagram } from '@ionic-native/instagram';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { PhotoLibrary } from '@ionic-native/photo-library';
+import { Base64 } from '@ionic-native/base64';
 
 
 @NgModule({
@@ -32,7 +39,10 @@ import { Instagram } from '@ionic-native/instagram';
     LoginPage,
     SignupPage,
     NewProductPage,
-    ReportPage
+    SelectProductPage,
+    NewOrderPage,
+    ReportPage,
+    DetailPage
   ],
   imports: [
     BrowserModule,
@@ -46,9 +56,12 @@ import { Instagram } from '@ionic-native/instagram';
     OrdersPage,
     ProfilePage,
     LoginPage,
+    SelectProductPage,
     SignupPage,
     NewProductPage,
-    ReportPage
+    NewOrderPage,
+    ReportPage,
+    DetailPage
   ],
   providers: [
     StatusBar,
@@ -56,8 +69,12 @@ import { Instagram } from '@ionic-native/instagram';
     SplashScreen,
     File,
     Instagram,
+    Diagnostic,
+    Base64,
+    PhotoLibrary,
     Camera,
     FileTransfer,
+    InAppBrowser,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpNativeProvider

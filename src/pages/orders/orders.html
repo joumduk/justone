@@ -9,6 +9,9 @@
 
 <ion-content>
   <ion-list>
+    <ion-item>
+      <a ion-button block (click)="pushNewOrder()"> New Order</a>
+    </ion-item>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-start></ion-icon>
       {{item.title}}

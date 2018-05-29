@@ -1,0 +1,87 @@
+<!--
+  Generated template for the DetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img src="http://api.nextobe.co.th/img/{{item.image_link}}">
+  <h1 id="iphoneX-heading3" style="color:#000000;">{{item.title}}</h1>
+  <div class="spacer" style="height: 10px;"></div>
+  <div>
+    <p>
+      Price
+      <span style="float:right;font-weight:bold;">{{item.price| currency:'฿ '}}</span>
+    </p>
+    <p>
+      Sale Price
+      <span style="float:right;font-weight:bold;">{{item.price| currency:'฿ '}}</span>
+    </p>
+  </div>
+  <div class="spacer" style="height: 10px;"></div>
+  <h4 id="iphoneX-heading4" style="color:#000000;">Description</h4>
+  <div id="iphoneX-markdown1" class="show-list-numbers-and-dots">
+    <p style="color:#000000;">{{item.description}}</p>
+
+  </div>
+  <button ion-button block red>Facebook</button>
+  <div>
+      <ion-card>
+ 
+          <ion-item>
+            <ion-avatar item-start>
+              <img src="http://placehold.it/75">
+            </ion-avatar>
+            <h2>{{facebook.name}}</h2>
+            <p>{{facebook.date}}</p>
+          </ion-item>
+     
+          <img src="http://api.nextobe.co.th/img/{{item.image_link}}" />
+     
+          <ion-card-content>
+          </ion-card-content>
+     
+          <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="text"></ion-icon>
+                <div>{{facebook.comments.length}} Comments</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note>
+                {{facebook.date}}
+              </ion-note>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+        <ion-card>
+            <ion-list class="chats">
+                <ion-item-sliding class="chat-item" *ngFor="let chat of facebook.comments" (click)="addNewOrderFaceoobk(chat)">
+                  <button ion-item class="chat">
+                    <img class="chat-picture" src="assets/imgs/avatar.png">
+                    <div class="chat-info">
+                      <h2 class="chat-title">{{chat.from.name}}</h2>
+                      <span *ngIf="chat.message" class="last-message">
+                        <p class="last-message-content last-message-content-text">{{chat.message}}</p>
+                        <span class="last-message-timestamp">{{chat.created_time | date }}</span>
+                      </span>
+                    </div>
+                  </button>
+                </ion-item-sliding>
+              </ion-list>
+        </ion-card>
+  </div>
+  <a ion-button block (click)="addNewOrder()">Sale This Product</a>
+  <div class="spacer" style="height: 10px;"></div>
+
+</ion-content>

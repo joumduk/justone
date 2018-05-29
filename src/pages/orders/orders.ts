@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
+import { NewOrderPage } from '../new-order/new-order';
 /**
  * Generated class for the OrdersPage page.
  *
@@ -42,5 +42,8 @@ export class OrdersPage {
     this.navCtrl.push(OrdersPage, {
       item: item
     });
+  }
+  pushNewOrder(){
+    this.navCtrl.push(NewOrderPage);
   }
 }

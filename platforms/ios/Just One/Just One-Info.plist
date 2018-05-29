@@ -71,6 +71,31 @@
           <key>NSExceptionAllowsInsecureHTTPLoads</key>
           <true/>
         </dict>
+        <key>192.168.1.55</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+        </dict>
+        <key>169.254.126.86</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+        </dict>
+        <key>192.168.43.137</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+        </dict>
+        <key>192.168.1.56</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+        </dict>
+        <key>100.68.176.163</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
+        </dict>
         <key>m.facebook.com</key>
         <dict/>
         <key>graph.facebook.com</key>
@@ -93,6 +118,14 @@
     </dict>
     <key>UILaunchStoryboardName</key>
     <string>CDVLaunchScreen</string>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>instagram</string>
+      <string>fbapi</string>
+      <string>fb-messenger-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
+    </array>
     <key>FacebookAppID</key>
     <string>386333375180882</string>
     <key>FacebookDisplayName</key>
@@ -106,13 +139,27 @@
         </array>
       </dict>
     </array>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>fbapi</string>
-      <string>fb-messenger-api</string>
-      <string>fbauth2</string>
-      <string>fbshareextension</string>
-      <string>instagram</string>
-    </array>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app requires access to your location when the screen is on and the app is displayed.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
+    <key>NSBluetoothPeripheralUsageDescription</key>
+    <string>This app requires bluetooth access to function properly.</string>
+    <key>NSCameraUsageDescription</key>
+    <string>This app requires camera access to function properly.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>This app requires photo library access to function properly.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app requires microphone access to function properly.</string>
+    <key>NSContactsUsageDescription</key>
+    <string>This app requires contacts access to function properly.</string>
+    <key>NSCalendarsUsageDescription</key>
+    <string>This app requires calendar access to function properly.</string>
+    <key>NSRemindersUsageDescription</key>
+    <string>This app requires reminders access to function properly.</string>
+    <key>NSMotionUsageDescription</key>
+    <string>This app requires motion detection access to function properly.</string>
   </dict>
 </plist>

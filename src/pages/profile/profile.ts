@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login'; 
-import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 /**
  * Generated class for the ProfilePage page.
@@ -17,6 +17,7 @@ import { HttpNativeProvider } from '../../providers/http-native/http-native';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
+  url: string;
   firstname:any;
   lastname:any;
   email:any;
@@ -25,18 +26,8 @@ export class ProfilePage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public storage:Storage,
-    public fb:Facebook,
-    public httpNavtive:HttpNativeProvider) {
-      fb.getLoginStatus()
-      .then(res => {
-        console.log(res.status);
-        if(res.status === "connected") {
-          this.isLoggedIn = true;
-        } else {
-          this.isLoggedIn = false;
-        }
-      })
-      .catch(e => console.log(e));
+    public httpNavtive:HttpNativeProvider,
+    private iab: InAppBrowser) {
     storage.forEach((value, key, index) => {
       if(key=='firstname'){
         this.firstname=value
@@ -50,13 +41,16 @@ export class ProfilePage {
     });
     
   }
-  synFacebook(){
-    this.fb.login(['public_profile', 'user_friends', 'email'])
-  .then((res: FacebookLoginResponse) => {
-    this.facebooklink(res.authResponse.accessToken,res.authResponse.userID);
-    console.log('Logged into Facebook!', res);
-  })
-  .catch(e => {console.log('Error logging into Facebook', e);alert("error")});
+  synFacebook() {
+        // Opening a URL and returning an InAppBrowserObject
+    let browser = this.iab.create('http://api.nextobe.co.th/products/fblogin/'+this.id_user,'_blank',{location:'no'}); 
+    browser.show();
+    browser.on('loadstop').subscribe(event => {
+      if(event.url=="http://api.nextobe.co.th/products/fbback/"+this.id_user){
+        browser.close();
+      }
+   });
+   // Inject scripts, css and more with browser.X
   }
   facebooklink(accesstoken,social_id){
     let url = 'http://api.nextobe.co.th/auth/facebookConnction';

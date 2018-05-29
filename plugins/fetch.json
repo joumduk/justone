@@ -113,5 +113,39 @@
     },
     "is_top_level": false,
     "variables": {}
+  },
+  "cordova-plugin-inappbrowser": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-inappbrowser@^2.0.2"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova.plugins.diagnostic": {
+    "source": {
+      "type": "registry",
+      "id": "cordova.plugins.diagnostic"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-photo-library": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-photo-library@^2.1.1"
+    },
+    "is_top_level": true,
+    "variables": {
+      "PHOTO_LIBRARY_USAGE_DESCRIPTION": "To choose photos"
+    }
+  },
+  "com-badrit-base64": {
+    "source": {
+      "type": "registry",
+      "id": "com-badrit-base64@^0.2.0"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

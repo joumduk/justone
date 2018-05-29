@@ -1,0 +1,90 @@
+<!--
+  Generated template for the NewOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>New Order</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  
+    <h2>Order Info.</h2>
+    <ion-card>
+        <ion-list>
+        <ion-item>
+            <ion-label>Date</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="order.date" ></ion-datetime>
+          </ion-item>
+          <ion-item>
+            <ion-label>Payment</ion-label>
+            <ion-select [(ngModel)]="order.payment">
+              <ion-option value="Bankwire">Bankwire</ion-option>
+              <ion-option value="Cash on delivery">Cash on delivery</ion-option>
+              <ion-option value="Direct Payment">Direct Payment</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>    
+    </ion-card>
+    <h2>Customer Info.</h2>
+    <ion-card>
+        <ion-list>
+          <ion-item>
+            <ion-label>Name</ion-label>
+            <ion-input placeholder="Name" [(ngModel)]="order.customer_name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Phone</ion-label>
+            <ion-input placeholder="Phone" [(ngModel)]="order.customer_phone"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Social</ion-label>
+            <ion-select [(ngModel)]="order.customer_social">
+              <ion-option value="1">Facebook</ion-option>
+              <ion-option value="2">Instagram</ion-option>
+              <ion-option value="3">Line</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label>Social ID</ion-label>
+            <ion-input placeholder="Social ID" [(ngModel)]="order.customer_social_id"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label>Address</ion-label>
+              <ion-textarea placeholder="Enter a Address" [(ngModel)]="order.address"></ion-textarea>
+            </ion-item>
+        </ion-list>    
+    </ion-card>
+    <h2>Items</h2>
+    <ion-card>
+        <ion-list>
+          <ion-row *ngFor="let item of items">
+            <ion-col align-self-center col-3 >
+              <img src="http://api.nextobe.co.th/img/{{item.image_link}}" />
+            </ion-col>
+            <ion-col col-6>
+                <ion-label style="text-overflow: ellipsis;">{{item.name}}</ion-label>
+                <ion-label color="primary">{{item.sale_price| currency:'฿ '}}</ion-label>
+            </ion-col>
+            <ion-col align-self-center col-3>
+                <ion-input type="number" text-center  placeholder="Number" style="text-align:center" [(ngModel)]="item.quantity" ></ion-input>
+            </ion-col>
+          </ion-row>
+          <ion-item>
+              <ion-label>Product Total</ion-label>
+              <ion-input text-right  type="number" [(ngModel)]="order.product_total"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label>Grand Total</ion-label>
+                <ion-input text-right   type="number" [(ngModel)]="order.grand_total"></ion-input>
+              </ion-item>
+        </ion-list>    
+    </ion-card>
+    <a ion-button block> Submit</a>
+</ion-content>

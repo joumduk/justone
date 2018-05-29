@@ -1,6 +1,30 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
   {
+    "id": "com-badrit-base64.Base64",
+    "file": "plugins/com-badrit-base64/www/Base64.js",
+    "pluginId": "com-badrit-base64",
+    "clobbers": [
+      "navigator.Base64"
+    ]
+  },
+  {
+    "id": "cordova-universal-clipboard.Clipboard",
+    "file": "plugins/cordova-universal-clipboard/www/clipboard.js",
+    "pluginId": "cordova-universal-clipboard",
+    "clobbers": [
+      "cordova.plugins.clipboard"
+    ]
+  },
+  {
+    "id": "cordova-instagram-plugin.InstagramPlugin",
+    "file": "plugins/cordova-instagram-plugin/www/CDVInstagramPlugin.js",
+    "pluginId": "cordova-instagram-plugin",
+    "clobbers": [
+      "Instagram"
+    ]
+  },
+  {
     "id": "cordova-plugin-file.DirectoryEntry",
     "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
     "pluginId": "cordova-plugin-file",
@@ -281,6 +305,15 @@ module.exports = [
     ]
   },
   {
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
+    "clobbers": [
+      "cordova.InAppBrowser.open",
+      "window.open"
+    ]
+  },
+  {
     "id": "cordova-plugin-ionic-keyboard.keyboard",
     "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
     "pluginId": "cordova-plugin-ionic-keyboard",
@@ -313,25 +346,100 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-universal-clipboard.Clipboard",
-    "file": "plugins/cordova-universal-clipboard/www/clipboard.js",
-    "pluginId": "cordova-universal-clipboard",
-    "clobbers": [
-      "cordova.plugins.clipboard"
+    "id": "cordova.plugins.diagnostic.Diagnostic",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic"
     ]
   },
   {
-    "id": "cordova-instagram-plugin.InstagramPlugin",
-    "file": "plugins/cordova-instagram-plugin/www/CDVInstagramPlugin.js",
-    "pluginId": "cordova-instagram-plugin",
-    "clobbers": [
-      "Instagram"
+    "id": "cordova.plugins.diagnostic.Diagnostic_Location",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.location.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.location"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Bluetooth",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.bluetooth.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.bluetooth"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Wifi",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.wifi.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.wifi"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Camera",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.camera.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.camera"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Notifications",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.notifications.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.notifications"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Microphone",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.microphone.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.microphone"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Contacts",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.contacts.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.contacts"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Calendar",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.calendar.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.calendar"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Reminders",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.reminders.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.reminders"
+    ]
+  },
+  {
+    "id": "cordova.plugins.diagnostic.Diagnostic_Motion",
+    "file": "plugins/cordova.plugins.diagnostic/www/ios/diagnostic.motion.js",
+    "pluginId": "cordova.plugins.diagnostic",
+    "merges": [
+      "cordova.plugins.diagnostic.motion"
     ]
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
+  "com-badrit-base64": "0.2.0",
+  "cordova-universal-clipboard": "0.1.0",
+  "cordova-instagram-plugin": "0.5.6",
   "cordova-plugin-file": "6.0.1",
   "cordova-plugin-advanced-http": "1.11.1",
   "cordova-plugin-camera": "4.0.2",
@@ -339,13 +447,13 @@ module.exports.metadata =
   "cordova-plugin-facebook4": "1.9.1",
   "cordova-plugin-file-transfer": "1.7.1",
   "cordova-plugin-filepath": "1.0.2",
+  "cordova-plugin-inappbrowser": "2.0.2",
   "cordova-plugin-ionic-keyboard": "2.0.5",
   "cordova-plugin-ionic-webview": "1.1.19",
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-sqlite-storage": "2.3.0",
-  "cordova-universal-clipboard": "0.1.0",
-  "cordova-instagram-plugin": "0.5.6"
+  "cordova.plugins.diagnostic": "4.0.5"
 };
 // BOTTOM OF METADATA
 });

@@ -7,6 +7,12 @@
     "files": {}
   },
   "installed_plugins": {
+    "com-badrit-base64": {
+      "PACKAGE_NAME": "com.peter.juston"
+    },
+    "cordova-instagram-plugin": {
+      "PACKAGE_NAME": "com.peter.juston"
+    },
     "cordova-plugin-advanced-http": {
       "PACKAGE_NAME": "com.peter.juston"
     },
@@ -30,6 +36,9 @@
     "cordova-plugin-filepath": {
       "PACKAGE_NAME": "com.peter.juston"
     },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.peter.juston"
+    },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.peter.juston"
     },
@@ -45,7 +54,7 @@
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "com.peter.juston"
     },
-    "cordova-instagram-plugin": {
+    "cordova.plugins.diagnostic": {
       "PACKAGE_NAME": "com.peter.juston"
     }
   },

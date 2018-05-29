@@ -9,6 +9,15 @@
   "installed_plugins": {
     "cordova-instagram-plugin": {
       "PACKAGE_NAME": "com.peter.juston"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.peter.juston"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.peter.juston"
+    },
+    "com-badrit-base64": {
+      "PACKAGE_NAME": "com.peter.juston"
     }
   },
   "dependent_plugins": {
