@@ -62,6 +62,13 @@ export class ProfilePage {
       alert(data.message);
     });
   }
+  synLine(){
+    // Opening a URL and returning an InAppBrowserObject
+  let browser = this.iab.create('http://api.nextobe.co.th/auth/linelogin/'+this.id_user,'_blank',{location:'no'}); 
+    browser.show();
+  // Inject scripts, css and more with browser.X
+  }
+
   logout(){
     this.storage.remove('id_user');
     this.navCtrl.setRoot(LoginPage);

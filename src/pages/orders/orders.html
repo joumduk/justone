@@ -9,12 +9,25 @@
 
 <ion-content padding>
     <button ion-button block (click)="pushNewOrder()">New Order</button>
+    <hr>
+    <ion-segment [(ngModel)]="status_list" color="secondary">
+      <ion-segment-button value="pending" (ionSelect)="orderlist(0)"> Pending
+      </ion-segment-button>
+      <ion-segment-button value="paid" (ionSelect)="orderlist(1)"> Paid
+        </ion-segment-button>
+      <ion-segment-button value="packing" (ionSelect)="orderlist(2)"> Packing
+      </ion-segment-button>
+      <ion-segment-button value="shiped" (ionSelect)="orderlist(3)"> Shiped
+        </ion-segment-button>
+    </ion-segment>
+    <hr>
   <ion-list>
-    <ion-item *ngFor="let order of orders" (click)="orderDatail(order)">
-      <h2 style="color:#387ef5;">Order : {{order.reference}} - {{order.id_order}} </h2>
-      <h3>Customer: {{order.customer_name}} </h3>
+    <ion-item *ngFor="let order of orders" >
+      <h2 style="color:#387ef5;" (click)="orderDatail(order)">Order : {{order.reference}} - {{order.id_order}} </h2>
+      <h3 (click)="orderDatail(order)">Customer: {{order.customer_name}} </h3>
       <h4>Total Price : <b>{{order.grand_total | currency :'฿ '}}</b></h4>
       <p style="text-align:right">{{order.date|date}}</p>
+      <a ion-button block *ngIf="next_btn[status]" (click)="passnextlevel(order)">{{next_btn[status]}}</a>
     </ion-item>
   </ion-list>
 </ion-content>

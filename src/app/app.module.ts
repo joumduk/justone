@@ -13,6 +13,9 @@ import { NewProductPage } from '../pages/new-product/new-product';
 import { SelectProductPage } from '../pages/select-product/select-product';
 import { DetailPage } from '../pages/detail/detail';
 import { NewOrderPage }from '../pages/new-order/new-order';
+import { OrderDetailPage }from '../pages/order-detail/order-detail';
+import { AddShippingPage }from '../pages/add-shipping/add-shipping';
+import { NewPostPage } from '../pages/new-post/new-post';
 
 import { HTTP } from '@ionic-native/http';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -28,6 +31,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { Base64 } from '@ionic-native/base64';
+import { Clipboard } from '@ionic-native/clipboard';
 
 
 @NgModule({
@@ -40,6 +44,9 @@ import { Base64 } from '@ionic-native/base64';
     SignupPage,
     NewProductPage,
     SelectProductPage,
+    OrderDetailPage,
+    NewPostPage,
+    AddShippingPage,
     NewOrderPage,
     ReportPage,
     DetailPage
@@ -59,7 +66,10 @@ import { Base64 } from '@ionic-native/base64';
     SelectProductPage,
     SignupPage,
     NewProductPage,
+    AddShippingPage,
+    NewPostPage,
     NewOrderPage,
+    OrderDetailPage,
     ReportPage,
     DetailPage
   ],
@@ -74,6 +84,7 @@ import { Base64 } from '@ionic-native/base64';
     PhotoLibrary,
     Camera,
     FileTransfer,
+    Clipboard,
     InAppBrowser,
     Facebook,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

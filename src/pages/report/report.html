@@ -9,5 +9,45 @@
 
 
 <ion-content padding>
-
+  <h1 style="margin-top:30px;">Today</h1>
+  <ion-list>
+      <ion-item>
+        <ion-label>Sales</ion-label>
+        <ion-label text-right>{{report.today_sale}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>Revenue</ion-label>
+          <ion-label text-right>{{report.today_revenue|currency:'฿ '}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>New Products</ion-label>
+            <ion-label text-right>{{report.today_product}}</ion-label>
+          </ion-item>
+    </ion-list>
+  <h1>This Month</h1>
+  <ion-list>
+      <ion-item>
+        <ion-label>Sales</ion-label>
+        <ion-label text-right>{{report.month_sales}}</ion-label>
+      </ion-item>
+      <ion-item>
+          <ion-label>Revenue</ion-label>
+          <ion-label text-right>{{report.month_revenue|currency:'฿ '}}</ion-label>
+        </ion-item>
+        <ion-item>
+            <ion-label>New Products</ion-label>
+            <ion-label text-right>{{report.month_product}}</ion-label>
+          </ion-item>
+    </ion-list>
+  <h1>Total Orders</h1>
+  <ion-list>
+    <ion-item>
+      <ion-label>Pending</ion-label>
+      <ion-label text-right>{{report.pending_orders}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Completed</ion-label>
+      <ion-label text-right>{{report.completed_orders}}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>

@@ -17,7 +17,9 @@ import { OrdersPage } from '../orders/orders';
 })
 export class NewOrderPage {
   items  = new Array<Product>();
+  selecteditems  = new Array<Product>();
   order :Order = new Order();
+  search_keyword="";
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public loadingCtrl:LoadingController,public httpNavtive:HttpNativeProvider,
     public storage:Storage
@@ -35,7 +37,7 @@ export class NewOrderPage {
       product.image_link=parameter.image_link;
       this.order.product_total=parameter.sale_price;
       this.order.grand_total=parameter.sale_price;
-      this.items.push(product);
+      this.selecteditems.push(product);
     }
     let parameter2=this.navParams.get('comment');
     if(parameter2){
@@ -66,12 +68,12 @@ export class NewOrderPage {
         'address':this.order.address,
         'product_total':this.order.product_total,
         'grand_total':this.order.grand_total,
-        'id_product':this.items[0].id,
-        'product_name':this.items[0].name,
-        'price':this.items[0].price,
-        'sale_price':this.items[0].sale_price,
-        'quantity':this.items[0].quantity
       };
+      for(let e=0;e<this.selecteditems.length;e++){
+        postParams['products['+e+']']=this.selecteditems[e];  
+      }
+      
+      
       let options = {'Content-Type': 'application/json'};
       this.httpNavtive.post(url, postParams, options).subscribe(data=> {
         // alert(JSON.stringify(data));
@@ -84,9 +86,50 @@ export class NewOrderPage {
         loader.dismiss();
       });
     }
+  search(event){
+    // alert(JSON.stringify(event));
+    if(this.search_keyword.length>2){
+      let loader = this.loadingCtrl.create({
+        content: "Loading"
+      });
+      loader.present();
+      let url = 'http://api.nextobe.co.th/products/getSearch';
+        let postParams = {
+          'id_user':this.order.id_user,
+          'keyword':this.search_keyword
+        };
+        let options = {'Content-Type': 'application/json'};
+        this.httpNavtive.post(url, postParams, options).subscribe(data=> {
+          
+          // alert(data.message);
+          this.items=[];
+          if(data.status ==200){
+            // alert(JSON.stringify(data));  
+            if(data.products.length>0){
+              for (let e of data.products) {
+                this.items.push({
+                  id:e.id_product,
+                  name:e.name,
+                  price:e.price,
+                  sale_price:e.sale_price,
+                  image_link:e.image_link,
+                  quantity:1
+                });
+              }
+              
+            }
+          }
+          loader.dismiss();
+        });
+    }
+  }
+  selectedproduct(item:Product){
+    this.selecteditems.push(item);
+    this.change();
+  }
   change(){
     let price=0;
-    this.items.forEach(element => {
+    this.selecteditems.forEach(element => {
       price += Number(element.sale_price) * Number(element.quantity);
     });
     this.order.product_total=price;

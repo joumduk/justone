@@ -112,5 +112,6 @@
     <allow-navigation href="http://192.168.43.137:8100" />
     <allow-navigation href="http://192.168.1.56:8100" />
     <allow-navigation href="http://100.68.176.163:8100" />
-    <engine name="ios" spec="~4.5.4" />
+    <allow-navigation href="http://192.168.1.114:8100" />
+    <engine name="ios" spec="4.5.4" />
 </widget>

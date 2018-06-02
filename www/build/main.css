@@ -25715,6 +25715,10 @@ page-new-order .my-input {
   align-self: auto;
 }
 
+page-report border-right {
+  border-right: 1px solid #f2f2f2;
+}
+
 page-select-product ion-col {
   border-bottom: 1px solid #333;
 }

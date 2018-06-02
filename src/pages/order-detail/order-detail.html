@@ -1,0 +1,93 @@
+<!--
+  Generated template for the OrderDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Order Detail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h2>Order Info.</h2>
+    <ion-card>
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary" >Order.{{order.id_order}} - {{order.reference}} </ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label>Date : {{order.date|date}}</ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label>Payment : {{order.payment}}</ion-label>
+          </ion-item>
+        </ion-list>    
+    </ion-card>
+    <h2>Customer Info.</h2>
+    <ion-card>
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary" >{{order.customer_name}} </ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label>Tel : {{order.customer_phone}}</ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label>{{order.customer_social}} ID : {{order.customer_social_id}}</ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label>{{order.address}}</ion-label>
+          </ion-item>
+        </ion-list>    
+    </ion-card>
+    <h2>Items</h2>
+    <ion-card>
+        <ion-list>
+          <ion-row *ngFor="let item of items">
+            <ion-col align-self-center col-3 >
+              <img src="http://api.nextobe.co.th/img/{{item.image_link}}" />
+            </ion-col>
+            <ion-col col-6>
+                <ion-label style="text-overflow: ellipsis;">{{item.name}}</ion-label>
+                <ion-label color="primary">{{item.sale_price| currency:'฿ '}} x {{item.quantity}}</ion-label>
+            </ion-col>
+          </ion-row>
+          <ion-item>
+              <ion-label>Product Total {{order.product_total|currency:'฿ '}}</ion-label>
+            </ion-item>
+            <ion-item>
+              <ion-label>Grand Total {{order.grand_total|currency:'฿ '}}</ion-label>
+            </ion-item>
+        </ion-list>    
+    </ion-card>
+    <h2>Shipping Info</h2>
+    <ion-card *ngFor="let shipping of shippings">
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary">{{shipping.delivery}}</ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label>Shipping Fee : {{shipping.shipping_fee|currency:'฿ '}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>Tracking Code : {{shipping.tracking_code}}</ion-label>
+              </ion-item>
+          <ion-item>
+            <ion-label>Tracking URL</ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label (click)="openTracking(shipping)">{{shipping.tracking_link}}</ion-label>
+          </ion-item>
+          <ion-item>
+              <a ion-button block (click)="copytoclipboard(shipping)">Copy to clipboard</a>
+          </ion-item>
+          
+        </ion-list>    
+    </ion-card>
+    <a ion-button block (click)="addshipping()"> Add Shipping</a>
+</ion-content>
