@@ -34,6 +34,8 @@ export class ReportPage {
         this.report.month_revenue=data.report.month_revenue;
         this.report.month_product=data.report.month_product;
         this.report.pending_orders=data.report.pending_order;
+        this.report.paid_orders=data.report.paid_order;
+        this.report.packing_orders=data.report.packing_order;
         this.report.completed_orders=data.report.completed_orders;
       });
     });
@@ -52,5 +54,7 @@ export class Report{
   month_revenue:Number;
   month_product:Number;
   pending_orders:Number;
+  paid_orders:Number;
+  packing_orders:Number;
   completed_orders:Number;
 }

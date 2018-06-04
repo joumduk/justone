@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { NewProductPage } from '../new-product/new-product';
 import { DetailPage } from '../detail/detail';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
@@ -17,6 +17,7 @@ export class ProductsPage {
     public navCtrl: NavController, 
     public navParams: NavParams,    
     public storage:Storage,   
+    public loadingCtrl:LoadingController,
     public httpNavtive:HttpNativeProvider) {
     this.selectedItem = navParams.get('item');
     // Let's populate this page with some filler content for funzies
@@ -25,6 +26,11 @@ export class ProductsPage {
 
     this.items = [];
     storage.get('id_user').then((val) => {
+      let loader = this.loadingCtrl.create({
+        content: "Loading"
+      });
+
+    loader.present();
       let url = 'http://api.nextobe.co.th/products/getproducts';
       let postParams = {'id_user':val};
       let options = {'Content-Type': 'application/json'};
@@ -41,6 +47,7 @@ export class ProductsPage {
             image: e.image_link
           });
         }
+        loader.dismiss();
       });
     });
     

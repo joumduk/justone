@@ -351,17 +351,7 @@ var NewProductPage = /** @class */ (function () {
                 loader.dismiss();
                 if (_this.product.instagram) {
                     if (_this.instagram) {
-                        if (_this.instagram.isInstalled()) {
-                            _this.instagram.share(_this.imageFileName, _this.product.description)
-                                .then(function () {
-                                loader.dismiss();
-                                console.log('Shared!');
-                            })
-                                .catch(function (error) {
-                                console.error(error);
-                                loader.dismiss();
-                            });
-                        }
+                        _this.btninstagram();
                     }
                     else {
                         loader.dismiss();
@@ -373,7 +363,7 @@ var NewProductPage = /** @class */ (function () {
     };
     NewProductPage.prototype.btninstagram = function () {
         if (this.instagram.isInstalled()) {
-            this.instagram.share(this.imageFileName, this.product.description)
+            this.instagram.shareAsset(this.imageFileName)
                 .then(function () {
                 console.log('Shared!');
             })
@@ -385,7 +375,7 @@ var NewProductPage = /** @class */ (function () {
     };
     NewProductPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-new-product',template:/*ion-inline-start:"/Users/peter/Desktop/hybrid/justone/src/pages/new-product/new-product.html"*/'<!--\n  Generated template for the NewProductPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>New Product</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <ion-label  stacked>Name</ion-label>\n      <ion-input [(ngModel)]="product.name" autocapitalize=\'off\'  type="text" value=""></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Origin Price</ion-label>\n      <ion-input [(ngModel)]="product.price" autocapitalize=\'off\'  type="text" value=""></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Sale Price</ion-label>\n      <ion-input [(ngModel)]="product.sale_price" autocapitalize=\'off\' type="text" value=""></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Description</ion-label>\n      <ion-textarea [(ngModel)]="product.description" placeholder="Enter a description"></ion-textarea>\n    </ion-item>\n    <ion-item>\n      <button ion-button color="secondary" (click)="getImage()">Get Image</button>\n    </ion-item>\n    <ion-item>\n      <h4>Image Preview</h4>\n      <p>{{imageURI}}"</p>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-item>\n      <ion-label>Facebook</ion-label>\n      <ion-checkbox [(ngModel)]="product.facebook" ></ion-checkbox>\n    </ion-item> \n    <ion-item>\n      <ion-label>Instagram</ion-label>\n      <ion-checkbox [(ngModel)]="product.instagram" ></ion-checkbox>\n    </ion-item> \n    <ion-item>\n      <ion-label>Line</ion-label>\n      <ion-checkbox [(ngModel)]="product.line" ></ion-checkbox>\n    </ion-item> \n  </ion-list>\n  <button ion-button block (click)="uploadFile()">Submit</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/peter/Desktop/hybrid/justone/src/pages/new-product/new-product.html"*/,
+            selector: 'page-new-product',template:/*ion-inline-start:"/Users/peter/Desktop/hybrid/justone/src/pages/new-product/new-product.html"*/'<!--\n  Generated template for the NewProductPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>New Product</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item>\n      <ion-label  stacked>Name</ion-label>\n      <ion-input [(ngModel)]="product.name" autocapitalize=\'off\'  type="text" value=""></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Origin Price</ion-label>\n      <ion-input [(ngModel)]="product.price" autocapitalize=\'off\'  type="text" value=""></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Sale Price</ion-label>\n      <ion-input [(ngModel)]="product.sale_price" autocapitalize=\'off\' type="text" value=""></ion-input>\n    </ion-item>\n    <ion-item>\n      <ion-label stacked>Description</ion-label>\n      <ion-textarea [(ngModel)]="product.description" placeholder="Enter a description"></ion-textarea>\n    </ion-item>\n    <ion-item>\n      <button ion-button color="secondary" (click)="getImage()">Get Image</button>\n    </ion-item>\n    <ion-item>\n      <h4>Image Preview</h4>\n      <p>{{imageURI}}"</p>\n    </ion-item>\n  </ion-list>\n  <ion-list>\n    <ion-item>\n      <ion-label>Facebook</ion-label>\n      <ion-checkbox [(ngModel)]="product.facebook" ></ion-checkbox>\n    </ion-item> \n    <ion-item>\n      <ion-label>Instagram</ion-label>\n      <ion-checkbox [(ngModel)]="product.instagram"></ion-checkbox>\n    </ion-item> \n    <ion-item>\n      <ion-label>Line</ion-label>\n      <ion-checkbox [(ngModel)]="product.line" ></ion-checkbox>\n    </ion-item> \n  </ion-list>\n  <button ion-button block (click)="uploadFile()">Submit</button>\n\n</ion-content>\n'/*ion-inline-end:"/Users/peter/Desktop/hybrid/justone/src/pages/new-product/new-product.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_http__["a" /* HTTP */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_file_transfer__["a" /* FileTransfer */],
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_5__providers_http_native_http_native__["a" /* HttpNativeProvider */], __WEBPACK_IMPORTED_MODULE_10__ionic_native_base64__["a" /* Base64 */],
@@ -865,6 +855,8 @@ var ReportPage = /** @class */ (function () {
                 _this.report.month_revenue = data.report.month_revenue;
                 _this.report.month_product = data.report.month_product;
                 _this.report.pending_orders = data.report.pending_order;
+                _this.report.paid_orders = data.report.paid_order;
+                _this.report.packing_orders = data.report.packing_order;
                 _this.report.completed_orders = data.report.completed_orders;
             });
         });
@@ -874,7 +866,7 @@ var ReportPage = /** @class */ (function () {
     };
     ReportPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-report',template:/*ion-inline-start:"/Users/peter/Desktop/hybrid/justone/src/pages/report/report.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Report</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <h1 style="margin-top:30px;">Today</h1>\n  <ion-list>\n      <ion-item>\n        <ion-label>Sales</ion-label>\n        <ion-label text-right>{{report.today_sale}}</ion-label>\n      </ion-item>\n      <ion-item>\n          <ion-label>Revenue</ion-label>\n          <ion-label text-right>{{report.today_revenue|currency:\'฿ \'}}</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>New Products</ion-label>\n            <ion-label text-right>{{report.today_product}}</ion-label>\n          </ion-item>\n    </ion-list>\n  <h1>This Month</h1>\n  <ion-list>\n      <ion-item>\n        <ion-label>Sales</ion-label>\n        <ion-label text-right>{{report.month_sales}}</ion-label>\n      </ion-item>\n      <ion-item>\n          <ion-label>Revenue</ion-label>\n          <ion-label text-right>{{report.month_revenue|currency:\'฿ \'}}</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>New Products</ion-label>\n            <ion-label text-right>{{report.month_product}}</ion-label>\n          </ion-item>\n    </ion-list>\n  <h1>Total Orders</h1>\n  <ion-list>\n    <ion-item>\n      <ion-label>Pending</ion-label>\n      <ion-label text-right>{{report.pending_orders}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>Completed</ion-label>\n      <ion-label text-right>{{report.completed_orders}}</ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/peter/Desktop/hybrid/justone/src/pages/report/report.html"*/,
+            selector: 'page-report',template:/*ion-inline-start:"/Users/peter/Desktop/hybrid/justone/src/pages/report/report.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Report</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <h1 style="margin-top:30px;">Today</h1>\n  <ion-list>\n      <ion-item>\n        <ion-label>Sales</ion-label>\n        <ion-label text-right>{{report.today_sale}}</ion-label>\n      </ion-item>\n      <ion-item>\n          <ion-label>Revenue</ion-label>\n          <ion-label text-right>{{report.today_revenue|currency:\'฿ \'}}</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>New Products</ion-label>\n            <ion-label text-right>{{report.today_product}}</ion-label>\n          </ion-item>\n    </ion-list>\n  <h1>This Month</h1>\n  <ion-list>\n      <ion-item>\n        <ion-label>Sales</ion-label>\n        <ion-label text-right>{{report.month_sales}}</ion-label>\n      </ion-item>\n      <ion-item>\n          <ion-label>Revenue</ion-label>\n          <ion-label text-right>{{report.month_revenue|currency:\'฿ \'}}</ion-label>\n        </ion-item>\n        <ion-item>\n            <ion-label>New Products</ion-label>\n            <ion-label text-right>{{report.month_product}}</ion-label>\n          </ion-item>\n    </ion-list>\n  <h1>Total Orders</h1>\n  <ion-list>\n    <ion-item>\n      <ion-label>Pending</ion-label>\n      <ion-label text-right>{{report.pending_orders}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>Paid</ion-label>\n      <ion-label text-right>{{report.paid_orders}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>Packing</ion-label>\n      <ion-label text-right>{{report.packing_orders}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>Completed</ion-label>\n      <ion-label text-right>{{report.completed_orders}}</ion-label>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/peter/Desktop/hybrid/justone/src/pages/report/report.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_storage__["b" /* Storage */],
@@ -1421,11 +1413,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var ProductsPage = /** @class */ (function () {
-    function ProductsPage(navCtrl, navParams, storage, httpNavtive) {
+    function ProductsPage(navCtrl, navParams, storage, loadingCtrl, httpNavtive) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.storage = storage;
+        this.loadingCtrl = loadingCtrl;
         this.httpNavtive = httpNavtive;
         this.selectedItem = navParams.get('item');
         // Let's populate this page with some filler content for funzies
@@ -1433,6 +1426,10 @@ var ProductsPage = /** @class */ (function () {
             'american-football', 'boat', 'bluetooth', 'build'];
         this.items = [];
         storage.get('id_user').then(function (val) {
+            var loader = _this.loadingCtrl.create({
+                content: "Loading"
+            });
+            loader.present();
             var url = 'http://api.nextobe.co.th/products/getproducts';
             var postParams = { 'id_user': val };
             var options = { 'Content-Type': 'application/json' };
@@ -1450,6 +1447,7 @@ var ProductsPage = /** @class */ (function () {
                         image: e.image_link
                     });
                 }
+                loader.dismiss();
             });
         });
     }
@@ -1469,12 +1467,10 @@ var ProductsPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-products',template:/*ion-inline-start:"/Users/peter/Desktop/hybrid/justone/src/pages/products/products.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Products</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button ion-button block (click)="newProduct()">New Product</button>\n  <ion-list>\n    <ion-item *ngFor="let item of items" (click)="itemClicked(item)">\n      <ion-avatar item-start>\n        <img src="http://api.nextobe.co.th/img/{{item.image}}">\n      </ion-avatar>\n      <h2>{{item.title}}</h2>\n      <p>{{item.note}}</p>\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/peter/Desktop/hybrid/justone/src/pages/products/products.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_http_native_http_native__["a" /* HttpNativeProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_storage__["b" /* Storage */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_4__providers_http_native_http_native__["a" /* HttpNativeProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_http_native_http_native__["a" /* HttpNativeProvider */]) === "function" && _e || Object])
     ], ProductsPage);
     return ProductsPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=products.js.map
@@ -1777,14 +1773,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Ionic pages and navigation.
  */
 var ProfilePage = /** @class */ (function () {
-    function ProfilePage(navCtrl, navParams, storage, httpNavtive, iab) {
+    function ProfilePage(navCtrl, navParams, storage, httpNavtive, loadingCtrl, iab) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.storage = storage;
         this.httpNavtive = httpNavtive;
+        this.loadingCtrl = loadingCtrl;
         this.iab = iab;
         this.isLoggedIn = false;
+        this.social_syn = { 'facebook': 0, 'instagram': 0, 'line': 0 };
         storage.forEach(function (value, key, index) {
             if (key == 'firstname') {
                 _this.firstname = value;
@@ -1798,8 +1796,28 @@ var ProfilePage = /** @class */ (function () {
             else if (key == 'id_user') {
                 _this.id_user = value;
             }
+        }).then(function (v) {
+            _this.checkSyn();
         });
     }
+    ProfilePage.prototype.checkSyn = function () {
+        var _this = this;
+        var loader = this.loadingCtrl.create({
+            content: "Loading"
+        });
+        loader.present();
+        var url = 'http://api.nextobe.co.th/auth/Check_social_syn/' + this.id_user;
+        var postParams = {};
+        var options = { 'Content-Type': 'application/json' };
+        this.httpNavtive.get(url, postParams, options).subscribe(function (data) {
+            // alert(JSON.stringify(data));
+            // alert(data);
+            _this.social_syn.facebook = data.facebook;
+            _this.social_syn.instagram = data.instagram;
+            _this.social_syn.line = data.line;
+            loader.dismiss();
+        });
+    };
     ProfilePage.prototype.synFacebook = function () {
         var _this = this;
         // Opening a URL and returning an InAppBrowserObject
@@ -1837,15 +1855,12 @@ var ProfilePage = /** @class */ (function () {
     };
     ProfilePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-profile',template:/*ion-inline-start:"/Users/peter/Desktop/hybrid/justone/src/pages/profile/profile.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Profile</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n      <ion-item>\n          <ion-avatar item-start>\n            <img src="assets/imgs/avatar.png">\n          </ion-avatar>\n          <h2>{{firstname}} {{lastname}}</h2>\n          <p>{{email}}</p>\n        </ion-item>\n      <ion-item (click)="synFacebook()">\n          <img src="assets/imgs/facebook.png" item-start >\n          Facebook\n        <ion-icon name="checkmark-circle" item-end *ngIf="isLoggedIn"></ion-icon>\n      </ion-item>\n      <ion-item >\n          <img src="assets/imgs/instagram.png" item-start>\n          Instagram\n        <ion-icon name="checkmark-circle" item-end></ion-icon>\n      </ion-item>\n      <ion-item (click)="synLine()">\n          <img src="assets/imgs/line.png" item-start>\n          Line\n          <ion-icon name="checkmark-circle" item-end></ion-icon>\n        </ion-item>\n  </ion-list>\n  \n  <button ion-button block color="danger" (click)="logout()">Log Out</button>\n</ion-content>\n'/*ion-inline-end:"/Users/peter/Desktop/hybrid/justone/src/pages/profile/profile.html"*/,
+            selector: 'page-profile',template:/*ion-inline-start:"/Users/peter/Desktop/hybrid/justone/src/pages/profile/profile.html"*/'<ion-header>\n  <ion-navbar>\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>Profile</ion-title>\n  </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n      <ion-item>\n          <ion-avatar item-start>\n            <img src="assets/imgs/avatar.png">\n          </ion-avatar>\n          <h2>{{firstname}} {{lastname}}</h2>\n          <p>{{email}}</p>\n        </ion-item>\n      <ion-item (click)="synFacebook()">\n          <img src="assets/imgs/facebook.png" item-start *ngIf="social_syn.facebook==1" >\n          Facebook\n        <ion-icon name="checkmark-circle" item-end ></ion-icon>\n      </ion-item>\n      <ion-item >\n          <img src="assets/imgs/instagram.png" item-start>\n          Instagram\n        <ion-icon name="checkmark-circle" item-end *ngIf="social_syn.instagram==1"></ion-icon>\n      </ion-item>\n      <ion-item (click)="synLine()">\n          <img src="assets/imgs/line.png" item-start>\n          Line\n          <ion-icon name="checkmark-circle" item-end *ngIf="social_syn.line==1"></ion-icon>\n        </ion-item>\n  </ion-list>\n  \n  <button ion-button block color="danger" (click)="logout()">Log Out</button>\n</ion-content>\n'/*ion-inline-end:"/Users/peter/Desktop/hybrid/justone/src/pages/profile/profile.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */],
-            __WEBPACK_IMPORTED_MODULE_4__providers_http_native_http_native__["a" /* HttpNativeProvider */],
-            __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_storage__["b" /* Storage */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_4__providers_http_native_http_native__["a" /* HttpNativeProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_http_native_http_native__["a" /* HttpNativeProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__ionic_native_in_app_browser__["a" /* InAppBrowser */]) === "function" && _f || Object])
     ], ProfilePage);
     return ProfilePage;
+    var _a, _b, _c, _d, _e, _f;
 }());
 
 //# sourceMappingURL=profile.js.map

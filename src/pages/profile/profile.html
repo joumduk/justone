@@ -18,19 +18,19 @@
           <p>{{email}}</p>
         </ion-item>
       <ion-item (click)="synFacebook()">
-          <img src="assets/imgs/facebook.png" item-start >
+          <img src="assets/imgs/facebook.png" item-start *ngIf="social_syn.facebook==1" >
           Facebook
-        <ion-icon name="checkmark-circle" item-end *ngIf="isLoggedIn"></ion-icon>
+        <ion-icon name="checkmark-circle" item-end ></ion-icon>
       </ion-item>
       <ion-item >
           <img src="assets/imgs/instagram.png" item-start>
           Instagram
-        <ion-icon name="checkmark-circle" item-end></ion-icon>
+        <ion-icon name="checkmark-circle" item-end *ngIf="social_syn.instagram==1"></ion-icon>
       </ion-item>
       <ion-item (click)="synLine()">
           <img src="assets/imgs/line.png" item-start>
           Line
-          <ion-icon name="checkmark-circle" item-end></ion-icon>
+          <ion-icon name="checkmark-circle" item-end *ngIf="social_syn.line==1"></ion-icon>
         </ion-item>
   </ion-list>
   

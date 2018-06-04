@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,LoadingController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login'; 
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
@@ -23,10 +23,12 @@ export class ProfilePage {
   email:any;
   isLoggedIn=false;
   id_user:any;
+  social_syn = {'facebook':0,'instagram':0,'line':0};
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public storage:Storage,
     public httpNavtive:HttpNativeProvider,
+    public loadingCtrl:LoadingController,
     private iab: InAppBrowser) {
     storage.forEach((value, key, index) => {
       if(key=='firstname'){
@@ -38,6 +40,27 @@ export class ProfilePage {
       }else if(key=='id_user'){
         this.id_user=value
       }
+    }).then((v)=>{
+      this.checkSyn();
+    })
+    
+
+  }
+  checkSyn(){
+    let loader = this.loadingCtrl.create({
+      content: "Loading"
+    });
+    loader.present();
+    let url = 'http://api.nextobe.co.th/auth/Check_social_syn/'+this.id_user;
+    let postParams = {};
+    let options = {'Content-Type': 'application/json'};
+    this.httpNavtive.get(url, postParams, options).subscribe(data=> {
+      // alert(JSON.stringify(data));
+      // alert(data);
+      this.social_syn.facebook = data.facebook
+      this.social_syn.instagram = data.instagram
+      this.social_syn.line = data.line
+      loader.dismiss();
     });
     
   }

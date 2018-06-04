@@ -99,18 +99,7 @@ export class NewPostPage {
           loader.dismiss();
           if(this.product.instagram){
             if(this.instagram){
-              if(this.instagram.isInstalled()){
-                this.instagram.share(this.imageFileName,this.product.description)
-                .then(() => {
-                  loader.dismiss();
-                  console.log('Shared!');})
-                .catch((error: any) => {
-                  console.error(error);
-                  loader.dismiss();
-                });  
-              }
-            }else{
-              loader.dismiss()
+              this.btninstagram();
             }
           }
         }
@@ -121,7 +110,7 @@ export class NewPostPage {
   }
   btninstagram(){
     if(this.instagram.isInstalled()){
-      this.instagram.share(this.imageFileName,this.product.description)
+      this.instagram.shareAsset(this.imageFileName)
       .then(() => {
         console.log('Shared!');})
       .catch((error: any) => console.error(error));  
