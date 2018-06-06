@@ -9,6 +9,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { ProductsPage } from '../pages/products/products';
 import { OrdersPage } from '../pages/orders/orders';
 import { ReportPage } from '../pages/report/report';
+import { ReportPeriodPage } from '../pages/report-period/report-period';
 import { NewProductPage } from '../pages/new-product/new-product';
 import { SelectProductPage } from '../pages/select-product/select-product';
 import { DetailPage } from '../pages/detail/detail';
@@ -30,7 +31,6 @@ import { Instagram } from '@ionic-native/instagram';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { PhotoLibrary } from '@ionic-native/photo-library';
-import { Base64 } from '@ionic-native/base64';
 import { Clipboard } from '@ionic-native/clipboard';
 
 
@@ -45,6 +45,7 @@ import { Clipboard } from '@ionic-native/clipboard';
     NewProductPage,
     SelectProductPage,
     OrderDetailPage,
+    ReportPeriodPage,
     NewPostPage,
     AddShippingPage,
     NewOrderPage,
@@ -70,6 +71,7 @@ import { Clipboard } from '@ionic-native/clipboard';
     NewPostPage,
     NewOrderPage,
     OrderDetailPage,
+    ReportPeriodPage,
     ReportPage,
     DetailPage
   ],
@@ -80,7 +82,6 @@ import { Clipboard } from '@ionic-native/clipboard';
     File,
     Instagram,
     Diagnostic,
-    Base64,
     PhotoLibrary,
     Camera,
     FileTransfer,

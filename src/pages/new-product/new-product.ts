@@ -8,7 +8,6 @@ import { Facebook } from '@ionic-native/facebook';
 import { ProductsPage } from '../products/products'; 
 import { Storage } from '@ionic/storage';
 import { Instagram } from '@ionic-native/instagram';
-import { Base64 } from '@ionic-native/base64';
 
 /**
  * Generated class for the NewProductPage page.
@@ -27,7 +26,7 @@ export class NewProductPage {
   imageURI:any;
   imageFileName:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:HTTP,public transfer: FileTransfer,
-    public camera: Camera,public loadingCtrl:LoadingController,public httpNavtive:HttpNativeProvider,   private base64: Base64, 
+    public camera: Camera,public loadingCtrl:LoadingController,public httpNavtive:HttpNativeProvider, 
     public fb:Facebook, public storage:Storage,public instagram:Instagram
   ) {
     storage.get("id_user").then(val=>{

@@ -17,10 +17,13 @@ import { Storage } from '@ionic/storage';
 })
 export class ReportPage {
   report= new Report();
+  id_user='';
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public storage:Storage,   
     public httpNavtive:HttpNativeProvider) {
+     
     storage.get('id_user').then((val) => {
+      this.id_user=val;
       let url = 'http://api.nextobe.co.th/orders/getReports';
       let postParams = {'id_user':val};
       let options = {'Content-Type': 'application/json'};
@@ -40,7 +43,7 @@ export class ReportPage {
       });
     });
   }
-
+  
   ionViewDidLoad() {
     console.log('ionViewDidLoad ReportPage');
   }

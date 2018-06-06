@@ -9,6 +9,7 @@ import { OrdersPage } from '../pages/orders/orders';
 import { ReportPage } from '../pages/report/report';
 import { ProfilePage } from '../pages/profile/profile';
 import { NewPostPage } from '../pages/new-post/new-post';
+import { ReportPeriodPage } from '../pages/report-period/report-period';
 
 @Component({
   templateUrl: 'app.html'
@@ -29,6 +30,7 @@ export class MyApp {
       { title: 'Products', component: ProductsPage },
       { title: 'Orders', component: OrdersPage },
       { title: 'Report', component: ReportPage },
+      { title: 'Report for Period', component: ReportPeriodPage },
       { title: 'Profile', component: ProfilePage }
     ];
 

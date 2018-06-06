@@ -8,7 +8,7 @@ import { Facebook } from '@ionic-native/facebook';
 import { ProductsPage } from '../products/products'; 
 import { Storage } from '@ionic/storage';
 import { Instagram } from '@ionic-native/instagram';
-import { Base64 } from '@ionic-native/base64';/**
+/**
  * Generated class for the NewPostPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
@@ -23,8 +23,9 @@ export class NewPostPage {
   product = {description:'',facebook:false,instagram:false,line:false,id_user:''};
   imageURI:any;
   imageFileName:any;
+  loader;
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:HTTP,public transfer: FileTransfer,
-    public camera: Camera,public loadingCtrl:LoadingController,public httpNavtive:HttpNativeProvider,   private base64: Base64, 
+    public camera: Camera,public loadingCtrl:LoadingController,public httpNavtive:HttpNativeProvider,  
     public fb:Facebook, public storage:Storage,public instagram:Instagram
   ) {
     storage.get("id_user").then(val=>{
@@ -58,7 +59,10 @@ export class NewPostPage {
     
   }
   uploadFile() {
-   
+    this.loader = this.loadingCtrl.create({
+      content: "Loading"
+    });
+    this.loader.present();
     const fileTransfer: FileTransferObject = this.transfer.create();
   
     let options: FileUploadOptions = {
@@ -73,6 +77,8 @@ export class NewPostPage {
       console.log(data+" Uploaded Successfully");
       let respone=JSON.parse(data.response);
       this.imageFileName=respone.file;
+      // alert(JSON.stringify(data));
+      // this.loader.dismiss();
       this.submit();
       // alert("Image uploaded successfully");
     }, (err) => {
@@ -82,10 +88,6 @@ export class NewPostPage {
   
   submit(){
     // alert(JSON.stringify(this.product));
-    let loader = this.loadingCtrl.create({
-      content: "Loading"
-    });
-    loader.present();
     let url = 'http://api.nextobe.co.th/products/newPost';
       let postParams = {'description':this.product.description,'facebook':this.product.facebook,'instagram':this.product.instagram,'line':this.product.line,
     'id_user':this.product.id_user,'image':this.imageFileName};
@@ -96,16 +98,14 @@ export class NewPostPage {
         if(data.status ==200){
           // this.navCtrl.push(ProductsPage)
           this.navCtrl.setRoot(ProductsPage);
-          loader.dismiss();
           if(this.product.instagram){
             if(this.instagram){
               this.btninstagram();
             }
           }
         }
+        this.loader.dismiss();
       });
-      
-      
     // this.http.uploadFile("http://api.nextobe.co.th/auth/uploadfile",{},{},this.file.name,"file").then( (x)=>alert(1));
   }
   btninstagram(){
