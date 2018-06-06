@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { SignupPage } from '../signup/signup'; 
 import { Storage } from '@ionic/storage';
@@ -19,7 +19,7 @@ import { ProfilePage } from '../profile/profile';
 export class LoginPage {
   user={email:'',password:''};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public httpNavtive:HttpNativeProvider,public storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public httpNavtive:HttpNativeProvider,public loadingCtrl:LoadingController,public storage:Storage) {
     storage.get('id_user').then((val) => {
       if(val){
         // this.storage.remove('id_user');
@@ -28,7 +28,11 @@ export class LoginPage {
     });
   }
   login(){
-    let url = 'http://api.nextobe.co.th/auth/login';
+    let loader = this.loadingCtrl.create({
+      content: "Loading"
+    });
+    loader.present();
+    let url = 'https://justone-social-marketing.000webhostapp.com/auth/login';
     let postParams = {'email':this.user.email,'password':this.user.password};
     let options = {'Content-Type': 'application/json'};
     this.httpNavtive.post(url, postParams, options).subscribe(data=> {
@@ -43,6 +47,7 @@ export class LoginPage {
         this.storage.set('phone', user.phone);
         this.navCtrl.setRoot(ProfilePage);
       }
+      loader.dismiss();
     });
 
   }

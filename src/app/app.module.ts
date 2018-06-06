@@ -27,12 +27,11 @@ import { Facebook } from '@ionic-native/facebook';
 import { File } from '@ionic-native/file';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer';
-import { Instagram } from '@ionic-native/instagram';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Diagnostic } from '@ionic-native/diagnostic';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { Clipboard } from '@ionic-native/clipboard';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 @NgModule({
   declarations: [
@@ -80,8 +79,8 @@ import { Clipboard } from '@ionic-native/clipboard';
     HTTP,
     SplashScreen,
     File,
-    Instagram,
     Diagnostic,
+    SocialSharing,
     PhotoLibrary,
     Camera,
     FileTransfer,

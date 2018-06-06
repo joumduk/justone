@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { Storage } from '@ionic/storage';
 
@@ -19,12 +19,16 @@ export class ReportPage {
   report= new Report();
   id_user='';
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public storage:Storage,   
+    public storage:Storage,   public loadingCtrl:LoadingController,
     public httpNavtive:HttpNativeProvider) {
      
     storage.get('id_user').then((val) => {
+      let loader = this.loadingCtrl.create({
+        content: "Loading"
+      });
+      loader.present();
       this.id_user=val;
-      let url = 'http://api.nextobe.co.th/orders/getReports';
+      let url = 'https://justone-social-marketing.000webhostapp.com/orders/getReports';
       let postParams = {'id_user':val};
       let options = {'Content-Type': 'application/json'};
       this.httpNavtive.post(url, postParams, options).subscribe(data=> {
@@ -40,6 +44,7 @@ export class ReportPage {
         this.report.paid_orders=data.report.paid_order;
         this.report.packing_orders=data.report.packing_order;
         this.report.completed_orders=data.report.completed_orders;
+        loader.dismiss();
       });
     });
   }

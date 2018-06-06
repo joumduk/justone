@@ -1,30 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
   {
-    "id": "com-badrit-base64.Base64",
-    "file": "plugins/com-badrit-base64/www/Base64.js",
-    "pluginId": "com-badrit-base64",
-    "clobbers": [
-      "navigator.Base64"
-    ]
-  },
-  {
-    "id": "cordova-universal-clipboard.Clipboard",
-    "file": "plugins/cordova-universal-clipboard/www/clipboard.js",
-    "pluginId": "cordova-universal-clipboard",
-    "clobbers": [
-      "cordova.plugins.clipboard"
-    ]
-  },
-  {
-    "id": "cordova-instagram-plugin.InstagramPlugin",
-    "file": "plugins/cordova-instagram-plugin/www/CDVInstagramPlugin.js",
-    "pluginId": "cordova-instagram-plugin",
-    "clobbers": [
-      "Instagram"
-    ]
-  },
-  {
     "id": "cordova-plugin-file.DirectoryEntry",
     "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
     "pluginId": "cordova-plugin-file",
@@ -432,14 +408,25 @@ module.exports = [
     "merges": [
       "cordova.plugins.diagnostic.motion"
     ]
+  },
+  {
+    "id": "es6-promise-plugin.Promise",
+    "file": "plugins/es6-promise-plugin/www/promise.js",
+    "pluginId": "es6-promise-plugin",
+    "runs": true
+  },
+  {
+    "id": "cordova-plugin-x-socialsharing.SocialSharing",
+    "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+    "pluginId": "cordova-plugin-x-socialsharing",
+    "clobbers": [
+      "window.plugins.socialsharing"
+    ]
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-  "com-badrit-base64": "0.2.0",
-  "cordova-universal-clipboard": "0.1.0",
-  "cordova-instagram-plugin": "0.5.6",
   "cordova-plugin-file": "6.0.1",
   "cordova-plugin-advanced-http": "1.11.1",
   "cordova-plugin-camera": "4.0.2",
@@ -453,7 +440,9 @@ module.exports.metadata =
   "cordova-plugin-splashscreen": "5.0.2",
   "cordova-plugin-whitelist": "1.3.3",
   "cordova-sqlite-storage": "2.3.0",
-  "cordova.plugins.diagnostic": "4.0.5"
+  "cordova.plugins.diagnostic": "4.0.5",
+  "es6-promise-plugin": "4.2.2",
+  "cordova-plugin-x-socialsharing": "5.4.0"
 };
 // BOTTOM OF METADATA
 });

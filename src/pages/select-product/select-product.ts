@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { NewOrderPage } from '../new-order/new-order';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { Storage } from '@ionic/storage';
@@ -24,7 +23,7 @@ export class SelectProductPage {
     public storage:Storage,   
     public httpNavtive:HttpNativeProvider) {
     storage.get('id_user').then((val) => {
-      let url = 'http://api.nextobe.co.th/products/getproducts';
+      let url = 'https://justone-social-marketing.000webhostapp.com/products/getproducts';
       let postParams = {'id_user':val};
       let options = {'Content-Type': 'application/json'};
       this.httpNavtive.post(url, postParams, options).subscribe(data=> {

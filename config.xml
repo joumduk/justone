@@ -103,11 +103,9 @@
     <plugin name="cordova-plugin-filepath" spec="^1.2.0" />
     <allow-navigation href="http://168.120.255.212:8100" />
     <allow-navigation href="http://168.120.252.83:8100" />
-    <plugin name="cordova-instagram-plugin" spec="^0.5.6" />
     <allow-navigation href="http://192.168.1.55:8100" />
     <plugin name="cordova-plugin-inappbrowser" spec="^2.0.2" />
     <plugin name="cordova.plugins.diagnostic" spec="^4.0.5" />
-    <plugin name="com-badrit-base64" spec="^0.2.0" />
     <allow-navigation href="http://169.254.126.86:8100" />
     <allow-navigation href="http://192.168.43.137:8100" />
     <allow-navigation href="http://192.168.1.56:8100" />
@@ -115,4 +113,5 @@
     <allow-navigation href="http://192.168.1.114:8100" />
     <allow-navigation href="http://10.128.27.34:8100" />
     <engine name="ios" spec="4.5.4" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
 </widget>

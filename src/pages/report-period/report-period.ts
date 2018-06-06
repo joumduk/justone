@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { Storage } from '@ionic/storage';
 
@@ -19,7 +19,7 @@ export class ReportPeriodPage {
   period={start:'',end:''};
   id_user='';
   constructor(public navCtrl: NavController, public navParams: NavParams,public storage:Storage,   
-    public httpNavtive:HttpNativeProvider) {
+    public loadingCtrl:LoadingController, public httpNavtive:HttpNativeProvider) {
       var dateObj = new Date();
       this.period.start= dateObj.getFullYear() +"-" + this.twodigits(Number(dateObj.getMonth() + 1)) + '-01' ;
       var lastDayOfMonth = new Date(dateObj.getFullYear(), dateObj.getMonth()+1, 0);
@@ -37,7 +37,11 @@ export class ReportPeriodPage {
     return (number < 10 ? '0' : '') + number
   }
   changeDate(){
-    let url = 'http://api.nextobe.co.th/orders/getReportsByPeriod';
+    let loader = this.loadingCtrl.create({
+      content: "Loading"
+    });
+    loader.present();
+    let url = 'https://justone-social-marketing.000webhostapp.com/orders/getReportsByPeriod';
     let postParams = {
       'id_user':this.id_user,
       'start_date':this.period.start,
@@ -50,6 +54,7 @@ export class ReportPeriodPage {
       this.report.period_sale=data.report.period_sale;
       this.report.period_revenue=data.report.period_revenue;
       this.report.period_product=data.report.period_product;
+      loader.dismiss();
     });
   }
 }

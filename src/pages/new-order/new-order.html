@@ -65,11 +65,11 @@
     <ion-card>
         <ion-searchbar
           [(ngModel)]="search_keyword"
-          (ionInput)="search($event.keyCode)">
+          (change)="search($event)" autocorrect="off">
         </ion-searchbar>
         <ion-row *ngFor="let item of items">
             <ion-col align-self-center col-4 >
-              <img src="http://api.nextobe.co.th/img/{{item.image_link}}" />
+              <img src="https://justone-social-marketing.000webhostapp.com/img/{{item.image_link}}" />
             </ion-col>
             <ion-col col-8>
                 <ion-label style="text-overflow: ellipsis;">{{item.name}}</ion-label>
@@ -86,7 +86,7 @@
         <ion-list>
           <ion-row *ngFor="let item of selecteditems">
             <ion-col align-self-center col-3 >
-              <img src="http://api.nextobe.co.th/img/{{item.image_link}}" />
+              <img src="https://justone-social-marketing.000webhostapp.com/img/{{item.image_link}}" />
             </ion-col>
             <ion-col col-6>
                 <ion-label style="text-overflow: ellipsis;">{{item.name}}</ion-label>

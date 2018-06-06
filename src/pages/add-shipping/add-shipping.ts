@@ -27,7 +27,7 @@ export class AddShippingPage {
       content: "Loading"
     });
     loader.present();
-    let url = 'http://api.nextobe.co.th/orders/addShipping';
+    let url = 'https://justone-social-marketing.000webhostapp.com/orders/addShipping';
       let postParams = {
         'id_order':this.shipping.id_order,
         'delivery_option':this.shipping.delivery_option,

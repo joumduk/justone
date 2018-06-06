@@ -51,12 +51,25 @@ export class NewOrderPage {
     console.log('ionViewDidLoad NewOrderPage');
   }
   submit(){
+    if(this.order.date==''){
+      alert("please select date");
+    }else if(this.order.payment==''){
+      alert("please select Payment");
+    }else if(this.order.customer_name==''){
+      alert("please input customer name");
+    }else if(this.order.customer_phone==''){
+      alert("please input customer phone number");
+    }else if(this.order.customer_social_id==''){
+      alert("please input customer social id");
+    }else if(this.selecteditems.length ==0){
+      alert("please select Sales item");
+    }else{
     // alert(JSON.stringify(this.product));
     let loader = this.loadingCtrl.create({
       content: "Loading"
     });
     loader.present();
-    let url = 'http://api.nextobe.co.th/orders/newOrder';
+    let url = 'https://justone-social-marketing.000webhostapp.com/orders/newOrder';
       let postParams = {
         'date':this.order.date,
         'id_user':this.order.id_user,
@@ -86,6 +99,7 @@ export class NewOrderPage {
         loader.dismiss();
       });
     }
+  }
   search(event){
     // alert(JSON.stringify(event));
     if(this.search_keyword.length>2){
@@ -93,7 +107,7 @@ export class NewOrderPage {
         content: "Loading"
       });
       loader.present();
-      let url = 'http://api.nextobe.co.th/products/getSearch';
+      let url = 'https://justone-social-marketing.000webhostapp.com/products/getSearch';
         let postParams = {
           'id_user':this.order.id_user,
           'keyword':this.search_keyword
@@ -145,15 +159,15 @@ export class Product {
   quantity:Number =1;
 }
 export class Order{
-  date: string;
-  id_user:string;
+  date: string='';
+  id_user:string='';
  payment:string = "Bankwire";
- customer_name:string;
- customer_phone:string;
+ customer_name:string='';
+ customer_phone:string='';
  customer_social:Number=1;
- customer_social_id:string;
- address:string;
+ customer_social_id:string='';
+ address:string='';
  
- product_total:Number;
- grand_total:Number;
+ product_total:Number=0;
+ grand_total:Number=0;
 }

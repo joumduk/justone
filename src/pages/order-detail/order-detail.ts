@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,Events } from 'ionic-angular';
+import { NavController, NavParams, Events,LoadingController } from 'ionic-angular';
 
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { Storage } from '@ionic/storage';
@@ -26,6 +26,7 @@ export class OrderDetailPage {
     public navParams: NavParams,
     public storage:Storage,   
     private iab: InAppBrowser,
+    public loadingCtrl:LoadingController,
     public events:Events,
     private clipboard: Clipboard,
     public httpNavtive:HttpNativeProvider) {
@@ -33,9 +34,13 @@ export class OrderDetailPage {
      this.listenEvents();
   }
   calldata(){
+    let loader = this.loadingCtrl.create({
+      content: "Loading"
+    });
+    loader.present();
     this.items=[];
     let id = this.navParams.get('id_order');
-    let url = 'http://api.nextobe.co.th/orders/getorderdetail';
+    let url = 'https://justone-social-marketing.000webhostapp.com/orders/getorderdetail';
     let postParams = {'id_order':id};
     let options = {'Content-Type': 'application/json'};
     this.httpNavtive.post(url, postParams, options).subscribe(data=> {
@@ -74,6 +79,7 @@ export class OrderDetailPage {
           });
         }
       }
+      loader.dismiss();
     });
   }
   listenEvents(){

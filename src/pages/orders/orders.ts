@@ -39,7 +39,7 @@ export class OrdersPage {
       content: "Loading"
     });
     loader.present();
-    let url = 'http://api.nextobe.co.th/orders/getOrders/'+id;
+    let url = 'https://justone-social-marketing.000webhostapp.com/orders/getOrders/'+id;
     let postParams = {'id_user':this.id_user};
     let options = {'Content-Type': 'application/json'};
     this.httpNavtive.post(url, postParams, options).subscribe(data=> {
@@ -76,7 +76,7 @@ export class OrdersPage {
         content: "Loading"
       });
       loader.present();
-      let url = 'http://api.nextobe.co.th/orders/nextlevel/';
+      let url = 'https://justone-social-marketing.000webhostapp.com/orders/nextlevel/';
       let postParams = {'id_user':this.id_user,
       'id_order':item.id_order
     };

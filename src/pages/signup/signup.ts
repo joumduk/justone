@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { ProfilePage } from '../profile/profile'; 
 import { LoginPage } from '../login/login'; 
@@ -18,11 +18,15 @@ import { Storage } from '@ionic/storage';
 })
 export class SignupPage {
   user={firstname:'',lastname:'',phone:'',email:'',password:'',conpasswd:''};
-  constructor(public navCtrl: NavController, public navParams: NavParams,public httpNavtive:HttpNativeProvider,public storage:Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public httpNavtive:HttpNativeProvider,public loadingCtrl:LoadingController,public storage:Storage) {
   }
   signup(){
+    let loader = this.loadingCtrl.create({
+      content: "Loading"
+    });
+    loader.present();
     if(this.user.conpasswd==this.user.password){
-      let url = 'http://api.nextobe.co.th/auth/signup';
+      let url = 'https://justone-social-marketing.000webhostapp.com/auth/signup';
       let postParams = {'firstname':this.user.firstname,'lastname':this.user.lastname,'phone':this.user.phone,'email':this.user.email,'password':this.user.password};
       let options = {'Content-Type': 'application/json'};
       this.httpNavtive.post(url, postParams, options).subscribe(data=> {
@@ -36,6 +40,7 @@ export class SignupPage {
           this.storage.set('phone', this.user.phone);
           this.navCtrl.setRoot(ProfilePage);
         }
+        loader.dismiss();
       });
     }else{
       alert("mis-metch between Password and Retyped password");

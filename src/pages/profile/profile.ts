@@ -51,7 +51,7 @@ export class ProfilePage {
       content: "Loading"
     });
     loader.present();
-    let url = 'http://api.nextobe.co.th/auth/Check_social_syn/'+this.id_user;
+    let url = 'https://justone-social-marketing.000webhostapp.com/auth/Check_social_syn/'+this.id_user;
     let postParams = {};
     let options = {'Content-Type': 'application/json'};
     this.httpNavtive.get(url, postParams, options).subscribe(data=> {
@@ -66,17 +66,17 @@ export class ProfilePage {
   }
   synFacebook() {
         // Opening a URL and returning an InAppBrowserObject
-    let browser = this.iab.create('http://api.nextobe.co.th/products/fblogin/'+this.id_user,'_blank',{location:'no'}); 
+    let browser = this.iab.create('https://justone-social-marketing.000webhostapp.com/products/fblogin/'+this.id_user,'_blank',{location:'no'}); 
     browser.show();
     browser.on('loadstop').subscribe(event => {
-      if(event.url=="http://api.nextobe.co.th/products/fbback/"+this.id_user){
+      if(event.url=="https://justone-social-marketing.000webhostapp.com/products/fbback/"+this.id_user){
         browser.close();
       }
    });
    // Inject scripts, css and more with browser.X
   }
   facebooklink(accesstoken,social_id){
-    let url = 'http://api.nextobe.co.th/auth/facebookConnction';
+    let url = 'https://justone-social-marketing.000webhostapp.com/auth/facebookConnction';
     let postParams = {'id_user':this.id_user,'accesstoken':accesstoken,'social_id': social_id};
     let options = {'Content-Type': 'application/json'};
     this.httpNavtive.post(url, postParams, options).subscribe(data=> {
@@ -87,7 +87,7 @@ export class ProfilePage {
   }
   synLine(){
     // Opening a URL and returning an InAppBrowserObject
-  let browser = this.iab.create('http://api.nextobe.co.th/auth/linelogin/'+this.id_user,'_blank',{location:'no'}); 
+  let browser = this.iab.create('https://justone-social-marketing.000webhostapp.com/auth/linelogin/'+this.id_user,'_blank',{location:'no'}); 
     browser.show();
   // Inject scripts, css and more with browser.X
   }

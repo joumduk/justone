@@ -9,19 +9,11 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"Clipboard\"><param name=\"android-package\" value=\"com.verso.cordova.clipboard.Clipboard\" /></feature>",
-              "count": 1
-            },
-            {
-              "xml": "<feature name=\"Instagram\"><param name=\"android-package\" value=\"com.vladstirbu.cordova.CDVInstagramPlugin\" /></feature>",
-              "count": 1
-            },
-            {
               "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
               "count": 1
             },
             {
-              "xml": "<feature name=\"Base64\"><param name=\"android-package\" value=\"com.badrit.Base64.Base64Plugin\" /></feature>",
+              "xml": "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>",
               "count": 1
             }
           ]
@@ -31,13 +23,23 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<provider android:authorities=\"${applicationId}.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"com.vladstirbu.cordova.plugin.utils.AssetProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/instagramplugin_provider_paths\" /></provider>",
+              "xml": "<provider android:authorities=\"${applicationId}.sharing.provider\" android:exported=\"false\" android:grantUriPermissions=\"true\" android:name=\"nl.xservices.plugins.FileProvider\"><meta-data android:name=\"android.support.FILE_PROVIDER_PATHS\" android:resource=\"@xml/sharing_paths\" /></provider>",
               "count": 1
             }
           ],
           "/*": [
             {
               "xml": "<uses-permission android:name=\"android.permission.BLUETOOTH\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+              "count": 1
+            }
+          ],
+          "/*/application": [
+            {
+              "xml": "<receiver android:enabled=\"true\" android:name=\"nl.xservices.plugins.ShareChooserPendingIntent\"><intent-filter><action android:name=\"android.intent.action.SEND\" /></intent-filter></receiver>",
               "count": 1
             }
           ]
@@ -84,40 +86,21 @@
     }
   },
   "installed_plugins": {
-    "cordova-universal-clipboard": {
-      "PACKAGE_NAME": "com.peter.juston"
-    },
-    "cordova-instagram-plugin": {
-      "PACKAGE_NAME": "com.peter.juston"
-    },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "com.peter.juston"
     },
     "cordova.plugins.diagnostic": {
       "PACKAGE_NAME": "com.peter.juston"
     },
-    "com-badrit-base64": {
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.peter.juston"
+    },
+    "cordova-plugin-x-socialsharing": {
       "PACKAGE_NAME": "com.peter.juston"
     }
   },
   "dependent_plugins": {},
   "modules": [
-    {
-      "id": "cordova-universal-clipboard.Clipboard",
-      "file": "plugins/cordova-universal-clipboard/www/clipboard.js",
-      "pluginId": "cordova-universal-clipboard",
-      "clobbers": [
-        "cordova.plugins.clipboard"
-      ]
-    },
-    {
-      "id": "cordova-instagram-plugin.InstagramPlugin",
-      "file": "plugins/cordova-instagram-plugin/www/CDVInstagramPlugin.js",
-      "pluginId": "cordova-instagram-plugin",
-      "clobbers": [
-        "Instagram"
-      ]
-    },
     {
       "id": "cordova-plugin-inappbrowser.inappbrowser",
       "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
@@ -216,19 +199,24 @@
       ]
     },
     {
-      "id": "com-badrit-base64.Base64",
-      "file": "plugins/com-badrit-base64/www/Base64.js",
-      "pluginId": "com-badrit-base64",
+      "id": "es6-promise-plugin.Promise",
+      "file": "plugins/es6-promise-plugin/www/promise.js",
+      "pluginId": "es6-promise-plugin",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-x-socialsharing.SocialSharing",
+      "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+      "pluginId": "cordova-plugin-x-socialsharing",
       "clobbers": [
-        "navigator.Base64"
+        "window.plugins.socialsharing"
       ]
     }
   ],
   "plugin_metadata": {
-    "cordova-universal-clipboard": "0.1.0",
-    "cordova-instagram-plugin": "0.5.6",
     "cordova-plugin-inappbrowser": "2.0.2",
     "cordova.plugins.diagnostic": "4.0.5",
-    "com-badrit-base64": "0.2.0"
+    "es6-promise-plugin": "4.2.2",
+    "cordova-plugin-x-socialsharing": "5.4.0"
   }
 }

@@ -5,9 +5,9 @@ import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-nati
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { Facebook } from '@ionic-native/facebook';
-import { ProductsPage } from '../products/products'; 
 import { Storage } from '@ionic/storage';
-import { Instagram } from '@ionic-native/instagram';
+import { SocialSharing } from '@ionic-native/social-sharing';
+
 /**
  * Generated class for the NewPostPage page.
  *
@@ -26,7 +26,7 @@ export class NewPostPage {
   loader;
   constructor(public navCtrl: NavController, public navParams: NavParams,public http:HTTP,public transfer: FileTransfer,
     public camera: Camera,public loadingCtrl:LoadingController,public httpNavtive:HttpNativeProvider,  
-    public fb:Facebook, public storage:Storage,public instagram:Instagram
+    public fb:Facebook, public storage:Storage,private socialSharing: SocialSharing
   ) {
     storage.get("id_user").then(val=>{
       this.product.id_user=val;
@@ -39,18 +39,9 @@ export class NewPostPage {
       destinationType: this.camera.DestinationType.FILE_URI,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
     }
-  
     this.camera.getPicture(options).then((imageData) => {
-      this.imageURI=imageData;
-      // alert(JSON.stringify(imageData));
-      // this.imageFileName=imageData.file;
-      // alert(imageData);
-      // this.imageFileName= 'data:image/jpeg;base64,'+imageData;
-      // this.base64.encodeFile(imageData).then((base64File: string) => {
-      //   alert(base64File);
-      // }, (err) => {
-      //   console.log(err);
-      // });
+      this.imageURI=imageData; 
+
     }, (err) => {
       console.log(err);
       alert(err);
@@ -72,7 +63,7 @@ export class NewPostPage {
       headers: {}
     }
   
-    fileTransfer.upload(this.imageURI, 'http://api.nextobe.co.th/products/uploadImg', options)
+    fileTransfer.upload(this.imageURI, 'https://justone-social-marketing.000webhostapp.com/products/uploadImg', options)
       .then((data) => {
       console.log(data+" Uploaded Successfully");
       let respone=JSON.parse(data.response);
@@ -85,10 +76,9 @@ export class NewPostPage {
       console.log(err);
     });
   }
-  
   submit(){
     // alert(JSON.stringify(this.product));
-    let url = 'http://api.nextobe.co.th/products/newPost';
+    let url = 'https://justone-social-marketing.000webhostapp.com/products/newPost';
       let postParams = {'description':this.product.description,'facebook':this.product.facebook,'instagram':this.product.instagram,'line':this.product.line,
     'id_user':this.product.id_user,'image':this.imageFileName};
       let options = {'Content-Type': 'application/json'};
@@ -97,24 +87,20 @@ export class NewPostPage {
         alert(data.message);
         if(data.status ==200){
           // this.navCtrl.push(ProductsPage)
-          this.navCtrl.setRoot(ProductsPage);
           if(this.product.instagram){
-            if(this.instagram){
-              this.btninstagram();
-            }
+           
           }
         }
         this.loader.dismiss();
       });
-    // this.http.uploadFile("http://api.nextobe.co.th/auth/uploadfile",{},{},this.file.name,"file").then( (x)=>alert(1));
+    // this.http.uploadFile("https://justone-social-marketing.000webhostapp.com/auth/uploadfile",{},{},this.file.name,"file").then( (x)=>alert(1));
   }
   btninstagram(){
-    if(this.instagram.isInstalled()){
-      this.instagram.shareAsset(this.imageFileName)
-      .then(() => {
-        console.log('Shared!');})
-      .catch((error: any) => console.error(error));  
-    }
+    this.socialSharing.shareViaInstagram(this.product.description, this.imageURI).then(() => {
+      // Success!
+    }).catch(() => {
+      // Error!
+    });
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewProductPage');

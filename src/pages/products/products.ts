@@ -29,9 +29,8 @@ export class ProductsPage {
       let loader = this.loadingCtrl.create({
         content: "Loading"
       });
-
     loader.present();
-      let url = 'http://api.nextobe.co.th/products/getproducts';
+      let url = 'https://justone-social-marketing.000webhostapp.com/products/getproducts';
       let postParams = {'id_user':val};
       let options = {'Content-Type': 'application/json'};
       this.httpNavtive.post(url, postParams, options).subscribe(data=> {

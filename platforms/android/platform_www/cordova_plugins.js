@@ -1,22 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
   {
-    "id": "cordova-universal-clipboard.Clipboard",
-    "file": "plugins/cordova-universal-clipboard/www/clipboard.js",
-    "pluginId": "cordova-universal-clipboard",
-    "clobbers": [
-      "cordova.plugins.clipboard"
-    ]
-  },
-  {
-    "id": "cordova-instagram-plugin.InstagramPlugin",
-    "file": "plugins/cordova-instagram-plugin/www/CDVInstagramPlugin.js",
-    "pluginId": "cordova-instagram-plugin",
-    "clobbers": [
-      "Instagram"
-    ]
-  },
-  {
     "id": "cordova-plugin-inappbrowser.inappbrowser",
     "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
     "pluginId": "cordova-plugin-inappbrowser",
@@ -114,22 +98,27 @@ module.exports = [
     ]
   },
   {
-    "id": "com-badrit-base64.Base64",
-    "file": "plugins/com-badrit-base64/www/Base64.js",
-    "pluginId": "com-badrit-base64",
+    "id": "es6-promise-plugin.Promise",
+    "file": "plugins/es6-promise-plugin/www/promise.js",
+    "pluginId": "es6-promise-plugin",
+    "runs": true
+  },
+  {
+    "id": "cordova-plugin-x-socialsharing.SocialSharing",
+    "file": "plugins/cordova-plugin-x-socialsharing/www/SocialSharing.js",
+    "pluginId": "cordova-plugin-x-socialsharing",
     "clobbers": [
-      "navigator.Base64"
+      "window.plugins.socialsharing"
     ]
   }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-  "cordova-universal-clipboard": "0.1.0",
-  "cordova-instagram-plugin": "0.5.6",
   "cordova-plugin-inappbrowser": "2.0.2",
   "cordova.plugins.diagnostic": "4.0.5",
-  "com-badrit-base64": "0.2.0"
+  "es6-promise-plugin": "4.2.2",
+  "cordova-plugin-x-socialsharing": "5.4.0"
 };
 // BOTTOM OF METADATA
 });

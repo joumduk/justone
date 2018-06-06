@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController } from 'ionic-angular';
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { Storage } from '@ionic/storage';
 import { NewOrderPage } from '../new-order/new-order';
@@ -22,9 +22,14 @@ export class DetailPage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public storage:Storage,   
+    public loadingCtrl:LoadingController, 
     public httpNavtive:HttpNativeProvider) {
+      let loader = this.loadingCtrl.create({
+        content: "Loading"
+      });
+      loader.present();
       let id = this.navParams.get('id');
-      let url = 'http://api.nextobe.co.th/products/getproductdetail';
+      let url = 'https://justone-social-marketing.000webhostapp.com/products/getproductdetail';
       let postParams = {'id_product':id};
       let options = {'Content-Type': 'application/json'};
       this.httpNavtive.post(url, postParams, options).subscribe(data=> {
@@ -36,13 +41,15 @@ export class DetailPage {
         this.item.sale_price = data.product.sale_price;
         this.item.description = data.product.description;
         this.item.image_link = data.product.image_link;
+        loader.dismiss();
       });
-      let url2 = 'http://api.nextobe.co.th/products/getComments';      
+      let url2 = 'https://justone-social-marketing.000webhostapp.com/products/getComments';      
       this.httpNavtive.post(url2, postParams, options).subscribe(data2=> {
         this.facebook.id=data2.media_id;
         this.facebook.date=data2.date;
         this.facebook.name=data2.name;
         this.facebook.comments=data2.comments.data;
+        loader.dismiss();
       });
       
   }
