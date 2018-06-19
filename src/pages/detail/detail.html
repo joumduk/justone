@@ -31,12 +31,10 @@
   <h4 id="iphoneX-heading4" style="color:#000000;">Description</h4>
   <div id="iphoneX-markdown1" class="show-list-numbers-and-dots">
     <p style="color:#000000;">{{item.description}}</p>
-
   </div>
-  <button ion-button block red>Facebook</button>
-  <div>
-      <ion-card>
- 
+  <div *ngIf="item.facebook">
+      <button ion-button block red>Facebook</button>
+      <ion-card >
           <ion-item>
             <ion-avatar item-start>
               <img src="http://placehold.it/75">
@@ -65,20 +63,20 @@
           </ion-row>
         </ion-card>
         <ion-card>
-            <ion-list class="chats">
-                <ion-item-sliding class="chat-item" *ngFor="let chat of facebook.comments" (click)="addNewOrderFaceoobk(chat)">
-                  <button ion-item class="chat">
-                    <img class="chat-picture" src="assets/imgs/avatar.png">
-                    <div class="chat-info">
-                      <h2 class="chat-title">{{chat.from.name}}</h2>
-                      <span *ngIf="chat.message" class="last-message">
-                        <p class="last-message-content last-message-content-text">{{chat.message}}</p>
-                        <span class="last-message-timestamp">{{chat.created_time | date }}</span>
-                      </span>
-                    </div>
-                  </button>
-                </ion-item-sliding>
-              </ion-list>
+          <ion-list class="chats">
+            <ion-item-sliding class="chat-item" *ngFor="let chat of facebook.comments" (click)="addNewOrderFaceoobk(chat)">
+              <button ion-item class="chat">
+                <img class="chat-picture" src="assets/imgs/avatar.png">
+                <div class="chat-info">
+                  <h2 class="chat-title">{{chat.from.name}}</h2>
+                  <span *ngIf="chat.message" class="last-message">
+                    <p class="last-message-content last-message-content-text">{{chat.message}}</p>
+                    <span class="last-message-timestamp">{{chat.created_time | date }}</span>
+                  </span>
+                </div>
+              </button>
+            </ion-item-sliding>
+          </ion-list>
         </ion-card>
   </div>
   <a ion-button block (click)="addNewOrder()">Sale This Product</a>

@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import { LoginPage } from '../login/login'; 
 import { HttpNativeProvider } from '../../providers/http-native/http-native'; 
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { LineOfficialPage } from '../line-official/line-official'; 
 
 /**
  * Generated class for the ProfilePage page.
@@ -23,7 +24,7 @@ export class ProfilePage {
   email:any;
   isLoggedIn=false;
   id_user:any;
-  social_syn = {'facebook':0,'instagram':0,'line':0};
+  social_syn = {'facebook':0,'instagram':0,'line':0,'official_line':0};
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     public storage:Storage,
@@ -57,22 +58,25 @@ export class ProfilePage {
     this.httpNavtive.get(url, postParams, options).subscribe(data=> {
       // alert(JSON.stringify(data));
       // alert(data);
-      this.social_syn.facebook = data.facebook
-      this.social_syn.instagram = data.instagram
-      this.social_syn.line = data.line
+      this.social_syn.facebook = data.facebook;
+      this.social_syn.instagram = data.instagram;
+      this.social_syn.line = data.line;
+      this.social_syn.official_line = data.official_line;
       loader.dismiss();
     });
     
   }
   synFacebook() {
         // Opening a URL and returning an InAppBrowserObject
-    let browser = this.iab.create('https://justone-social-marketing.000webhostapp.com/products/fblogin/'+this.id_user,'_blank',{location:'no'}); 
-    browser.show();
-    browser.on('loadstop').subscribe(event => {
-      if(event.url=="https://justone-social-marketing.000webhostapp.com/products/fbback/"+this.id_user){
-        browser.close();
-      }
-   });
+        if(this.social_syn.facebook==1){
+          let browser = this.iab.create('https://justone-social-marketing.000webhostapp.com/products/fblogout/'+this.id_user,'_blank',{location:'no'}); 
+          browser.show();
+        }else{
+          let browser = this.iab.create('https://justone-social-marketing.000webhostapp.com/products/fblogin/'+this.id_user,'_blank',{location:'no'}); 
+          browser.show();
+         this.social_syn.facebook=1;
+        }
+    
    // Inject scripts, css and more with browser.X
   }
   facebooklink(accesstoken,social_id){
@@ -89,9 +93,12 @@ export class ProfilePage {
     // Opening a URL and returning an InAppBrowserObject
   let browser = this.iab.create('https://justone-social-marketing.000webhostapp.com/auth/linelogin/'+this.id_user,'_blank',{location:'no'}); 
     browser.show();
+    this.social_syn.line=1;
   // Inject scripts, css and more with browser.X
   }
-
+  synOfficialLine(){
+    this.navCtrl.push(LineOfficialPage);
+  }
   logout(){
     this.storage.remove('id_user');
     this.navCtrl.setRoot(LoginPage);

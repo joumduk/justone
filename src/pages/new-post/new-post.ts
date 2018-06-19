@@ -88,7 +88,7 @@ export class NewPostPage {
         if(data.status ==200){
           // this.navCtrl.push(ProductsPage)
           if(this.product.instagram){
-           
+            this.btninstagram();
           }
         }
         this.loader.dismiss();

@@ -57,7 +57,7 @@ export class OrderDetailPage {
       this.order.address = data.order.address;
       this.order.product_total = data.order.product_total;
       this.order.grand_total = data.order.grand_total;
-      if(data.shippings.length>0){
+      if(data.items.length>0){
         for (let e of data.items) {
           this.items.push({
             name: e.product_name,

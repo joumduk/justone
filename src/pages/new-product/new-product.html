@@ -42,7 +42,7 @@
   <ion-list>
     <ion-item>
       <ion-label>Facebook</ion-label>
-      <ion-checkbox [(ngModel)]="product.facebook" ></ion-checkbox>
+      <ion-checkbox [(ngModel)]="product.facebook" *ngIf="social_syn.facebook==1"></ion-checkbox>
     </ion-item> 
     <ion-item>
       <ion-label>Instagram</ion-label>
@@ -50,7 +50,7 @@
     </ion-item> 
     <ion-item>
       <ion-label>Line</ion-label>
-      <ion-checkbox [(ngModel)]="product.line" ></ion-checkbox>
+      <ion-checkbox [(ngModel)]="product.line" *ngIf="social_syn.facebook==1"></ion-checkbox>
     </ion-item> 
   </ion-list>
   <button ion-button block (click)="uploadFile()">Submit</button>

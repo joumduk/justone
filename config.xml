@@ -112,6 +112,7 @@
     <allow-navigation href="http://100.68.176.163:8100" />
     <allow-navigation href="http://192.168.1.114:8100" />
     <allow-navigation href="http://10.128.27.34:8100" />
-    <engine name="ios" spec="4.5.4" />
     <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
+    <engine name="ios" spec="4.5.4" />
+    <allow-navigation href="http://192.168.1.116:8100" />
 </widget>

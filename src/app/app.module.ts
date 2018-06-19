@@ -17,6 +17,7 @@ import { NewOrderPage }from '../pages/new-order/new-order';
 import { OrderDetailPage }from '../pages/order-detail/order-detail';
 import { AddShippingPage }from '../pages/add-shipping/add-shipping';
 import { NewPostPage } from '../pages/new-post/new-post';
+import { LineOfficialPage } from '../pages/line-official/line-official';
 
 import { HTTP } from '@ionic-native/http';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -32,6 +33,7 @@ import { Diagnostic } from '@ionic-native/diagnostic';
 import { PhotoLibrary } from '@ionic-native/photo-library';
 import { Clipboard } from '@ionic-native/clipboard';
 import { SocialSharing } from '@ionic-native/social-sharing';
+
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     AddShippingPage,
     NewOrderPage,
     ReportPage,
+    LineOfficialPage,
     DetailPage
   ],
   imports: [
@@ -64,6 +67,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     ProfilePage,
     LoginPage,
     SelectProductPage,
+    LineOfficialPage,
     SignupPage,
     NewProductPage,
     AddShippingPage,

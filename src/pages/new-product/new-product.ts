@@ -23,6 +23,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 export class NewProductPage {
 
   product = {name:'',price:'',sale_price:'',description:'',facebook:false,instagram:false,line:false,id_user:''};
+  social_syn = {'facebook':0,'instagram':0,'line':0,'official_line':0};
   imageURI:any;
   imageFileName:any;
   loader;
@@ -32,6 +33,7 @@ export class NewProductPage {
   ) {
     storage.get("id_user").then(val=>{
       this.product.id_user=val;
+      this.checkSyn();
       // alert(val);
     });
   }
@@ -97,7 +99,25 @@ export class NewProductPage {
     }
    
   }
-  
+  checkSyn(){
+    let loader = this.loadingCtrl.create({
+      content: "Loading"
+    });
+    loader.present();
+    let url = 'https://justone-social-marketing.000webhostapp.com/auth/Check_social_syn/'+this.product.id_user;
+    let postParams = {};
+    let options = {'Content-Type': 'application/json'};
+    this.httpNavtive.get(url, postParams, options).subscribe(data=> {
+      // alert(JSON.stringify(data));
+      // alert(data);
+      this.social_syn.facebook = data.facebook;
+      this.social_syn.instagram = data.instagram;
+      this.social_syn.line = data.line;
+      this.social_syn.official_line = data.official_line;
+      loader.dismiss();
+    });
+    
+  }
   submit(){
     // alert(JSON.stringify(this.product));
     let url = 'https://justone-social-marketing.000webhostapp.com/products/newProduct';
@@ -116,8 +136,6 @@ export class NewProductPage {
           }
         }
       });
-      
-      
     // this.http.uploadFile("https://justone-social-marketing.000webhostapp.com/auth/uploadfile",{},{},this.file.name,"file").then( (x)=>alert(1));
   }
   btninstagram(){
